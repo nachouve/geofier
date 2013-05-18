@@ -35,12 +35,30 @@ Just download the Geofier project, place to the web folder to serve, configure a
 Step by step:
 - Download project (zip, git clone, ...)
 - Place it on the web folder (p.e '/var/www/mygeoservice')
-- Changes paramenters on 'config.php' file to point your database, user/password, tablename and "geo" columns.
- 
-At this moment you can access to the GeoJSON from your data and using in on Openlayers or Leaftet.
 
-- Test it with URLs like:
-  - http://localhost/mygeoservice/index.php/features 
-  - http://localhost/mygeoservice/index.php/feature/1 
+### Usage
 
-- Configure the Geojson layers to point the service of the 'test/ol.html' example.
+After installation, you must changes parameters on 'config.php' file to point your system:
+- database (name, dns, ...)
+- user/password
+- tablename
+- id column
+- "geo" columns to use to generate the geometry
+
+At this moment, you can access to the GeoJSON from your data and using in on Openlayers or Leaftet.
+
+Test it with URLs like:
+- http://localhost/mygeoservice/index.php/features 
+- http://localhost/mygeoservice/index.php/feature/1 
+
+Configure the Geojson layers to point the service of the 'test/ol.html' example.
+
+### Geofier API
+
+**Geofier** API has two functions by default:
+- GET '/feaures': return all features of the table
+- GET '/feature/[id]': return feature/s with that [id]
+
+### Extend Geofier API
+
+You can do it coding on index.php thanks to Slim.

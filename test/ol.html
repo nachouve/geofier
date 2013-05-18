@@ -1,0 +1,79 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<script src="http://maps.google.com/maps/api/js?v=3.6&amp;sensor=false"></script>
+    <script src="http://openlayers.org/dev/OpenLayers.js"></script>
+    <script type="text/javascript">
+        var lon = 90,
+            lat = 60,
+            zoom = 3,
+	    ed50 = new OpenLayers.Projection('EPSG:25829');
+           // #epsg4326 = new OpenLayers.Projection('EPSG:4326'),
+           // #epsg900913 = new OpenLayers.Projection('EPSG:900913');
+	    var bounds = new OpenLayers.Bounds(460000,4625000,690000,4855000);
+
+	var topoLayer = new OpenLayers.Layer.WMS("IGN-Base",
+                                              "http://www.ign.es/wms-inspire/ign-base", {
+                                                   layers: "IGNBaseTodo"
+                                               }, {
+                                                   isBaseLayer: true,
+                                                   buffer: 0,
+                                                   transitionEffect: 'resize',
+                                                   visibility: true
+                                               }
+                                              );
+
+    var pnoaIDEG_0708Layer = new OpenLayers.Layer.WMS("Ortofoto-IDEG(2007-08)",
+						      "http://ideg.xunta.es/wms_orto_2007-08/request.aspx", {
+							  layers: "Ortofoto_2007_08"
+						      }, {
+							  isBaseLayer: true,
+							  buffer: 0,
+							  transitionEffect: 'resize',
+							  visibility: false
+						      }
+						     );
+
+        function init(){
+            var map = new OpenLayers.Map('map', {
+                units: 'm',
+//                numZoomLevels: 19,
+                controls: [
+                    new OpenLayers.Control.Navigation(),
+                    new OpenLayers.Control.ScaleLine(),
+                    new OpenLayers.Control.MousePosition(),
+                    new OpenLayers.Control.LayerSwitcher()
+                ],
+                projection:ed50,
+                displayProjection: ed50, //Is used for displaying coordinates in appropriate CRS by MousePosition control,
+		resolutions: [611.4962262814,305.7481131407,152.8740565704,76.4370282852,
+                                    38.2185141426,19.1092570713,9.5546285356,4.7773142678,
+                                    2.3886571339,1.1943285670,0.5971642835,0.2985821417],
+	          tileSize: new OpenLayers.Size(512,512),
+        	  maxExtent: bounds
+            });
+
+
+            geojson_layer = new OpenLayers.Layer.Vector("GeoJSON", {
+                projection: ed50,
+                strategies: [new OpenLayers.Strategy.Fixed()],
+                protocol: new OpenLayers.Protocol.HTTP({
+                    url: "./index.php/features",
+                    format: new OpenLayers.Format.GeoJSON()
+                })
+            });
+       
+            map.addLayers([topoLayer, pnoaIDEG_0708Layer, geojson_layer]);
+            //map.addLayers([topoLayer]);
+
+            //map.setCenter(new OpenLayers.LonLat(lon, lat).transform(epsg4326, epsg900913), zoom);
+        }
+    </script>
+  </head>
+  <body onload="init()">
+    <div id="map" style="position: absolute; right: 0px; top: 0px; width: 100%; height: 100%"></div>
+  </body>
+</html>
+

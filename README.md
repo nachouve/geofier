@@ -8,7 +8,7 @@ Create a REST GeoService API from non geodb tables or views and return the resul
 **Geofier** is a micro PHP project to serve GeoJSON from DB tables or views with alphanumeric columns 
 that represents coordinates.
 
-### When to use 
+#### When to use 
 
 - There is spatial information in some tables in the DB: 
   - columns like "x_coord" and "y_coord" or 
@@ -17,6 +17,14 @@ that represents coordinates.
 - Users need to see this information on maps and interact with it.
 
 For these cases, **Geofier is a fantastic solution!**.
+
+#### When not to use
+
+If you have a spatial DB consider other nice project like:
+- PHP-Database-GeoJSON: https://github.com/bmcbride/PHP-Database-GeoJSON
+- FeatureServer: http://featureserver.org/
+- GeoRest: https://code.google.com/p/georest/
+- ...
 
 ### License
 

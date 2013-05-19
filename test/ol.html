@@ -9,7 +9,7 @@
         var lon = 90,
             lat = 60,
             zoom = 3,
-	    ed50 = new OpenLayers.Projection('EPSG:25829');
+	    ed50 = new OpenLayers.Projection('EPSG:23029');
            // #epsg4326 = new OpenLayers.Projection('EPSG:4326'),
            // #epsg900913 = new OpenLayers.Projection('EPSG:900913');
 	    var bounds = new OpenLayers.Bounds(460000,4625000,690000,4855000);
@@ -60,7 +60,7 @@
                 projection: ed50,
                 strategies: [new OpenLayers.Strategy.Fixed()],
                 protocol: new OpenLayers.Protocol.HTTP({
-                    url: "./index.php/features",
+                    url: "../index.php/features",
                     format: new OpenLayers.Format.GeoJSON()
                 })
             });

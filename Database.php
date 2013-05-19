@@ -12,12 +12,17 @@ class Database{
     include('config.php');
     $this->db = new PDO($DB_TYPE.':host='.$DB_HOST.';dbname='.$DB_NAME.';port='.$DB_PORT, $DB_USER, $DB_PASS);
     $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $this->db->setAttribute(PDO::ATTR_TIMEOUT, '1');
+    $this->db->setAttribute(PDO::ATTR_TIMEOUT, $QUERY_TIMEOUT);
   }
 
   public function getID($id){
     include('config.php');
-    $sql = 'select * from '.$TBL_NAME.' where "'.$TBL_ID.'"='.$id;
+    if ($TBL_ID_TYPE == 'text'){
+      $where = ' where '.$TBL_ID.'="'.$id.'"';
+    } else {
+      $where = ' where '.$TBL_ID.'='.$id;
+    }
+    $sql = 'select * from '.$TBL_NAME.$where;
     #echo '<p>'.$sql."</p>\n";
     $resp = $this->db->query($sql);
     return $resp;

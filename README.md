@@ -1,12 +1,18 @@
 Geofier
 =======
 
-Create a REST GeoService API from non geodb tables or views and return the results in GeoJSON format, suitable for use in OpenLayers, Leaflet, etc.
+Create a simple REST GeoService API from alphanumeric databases tables or views and return the results in GeoJSON format, suitable for use in OpenLayers, Leaflet, etc.
+
+- Do not need Spatial Databases
+- Do not need GIS server
+- No big changes on your system
 
 ### Introduction
 
 **Geofier** is a micro PHP project to serve GeoJSON from DB tables or views with alphanumeric columns 
 that represents coordinates.
+
+Tested with PostgreSQL, MySQL and SQLite.
 
 #### When to use 
 
@@ -36,18 +42,16 @@ Unless otherwise stated, all code are licensed under the [GPL3 License][].
 * PHP PDO ( http://www.php.net/manual/en/book.pdo.php ): to DB access
 * Slim PHP micro framework ( http://www.slimframework.com/ ): to create REST API
 
-### Installation
+### Installation and Usage
 
-Just download the Geofier project, place to the web folder to serve, configure and run.
+You can have it up and working in less than 2 minutes. 
+Just download the Geofier project on the web folder to be served, configure and just run.
 
-Step by step:
 - Download project (zip, git clone, ...)
 - Place it on the web folder (p.e '/var/www/mygeoservice')
 
-### Usage
-
-After installation, you must changes parameters on 'config.php' file to point your system:
-- database (name, dns, ...)
+After installation, you must changes parameters on 'config.php' file to point your DB:
+- database dns
 - user/password
 - tablename
 - id column
@@ -66,7 +70,8 @@ Configure the Geojson layers to point the service of the 'test/ol.html' example.
 **Geofier** API has two functions by default:
 - GET '/feaures': return all features of the table
 - GET '/feature/[id]': return feature/s with that [id]
+- GET '/feature/[column]/[value]': return feature/s where "column" equals to "value"
 
 ### Extend Geofier API
 
-You can do it coding on index.php thanks to Slim.
+You can do it easily using Slim framework. Take a look on the index.php to see examples of '$app->get()' and the calls to Database.php functions.

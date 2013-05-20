@@ -5,13 +5,12 @@
  * Connection parameters
  */
 
-$DB_TYPE='pgsql';
-$DB_HOST='localhost';
-$DB_PORT='5432';
-$DB_NAME='test_db';
-$DB_USER='test_user';
-$DB_PASS='test_password';
-
+$DB_TYPE='pgsql'; 	# pgsql|mysql|sqlite
+$DB_HOST='localhost'; 	# for sqlite path to the sqlite_db file
+$DB_PORT='5432'; 	# not set in SQLite
+$DB_NAME='test_db'; 	# not set in SQLite
+$DB_USER='test_user'; 	# not set in SQLite
+$DB_PASS='test_pwd'; 	#not set in SQLite
 
 /*
  * Parameters of the table to be served

@@ -10,7 +10,11 @@ class Database{
 
   public function __construct() {
     include('config.php');
-    $this->db = new PDO($DB_TYPE.':host='.$DB_HOST.';dbname='.$DB_NAME.';port='.$DB_PORT, $DB_USER, $DB_PASS);
+    if ($DB_TYPE=='sqlite'){
+      $this->db = new PDO($DB_TYPE.':'.$DB_HOST);
+    } else {
+      $this->db = new PDO($DB_TYPE.':host='.$DB_HOST.';dbname='.$DB_NAME.';port='.$DB_PORT, $DB_USER, $DB_PASS);
+    }
     $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $this->db->setAttribute(PDO::ATTR_TIMEOUT, $QUERY_TIMEOUT);
   }

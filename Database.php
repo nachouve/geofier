@@ -1,7 +1,7 @@
 <?php
 
 # TODO: Deal with big queries (http://www.php.net/manual/en/pdo.pgsqllobcreate.php, mysql different methods)
-# TODO: User Prepared statements
+# TODO: Use Prepared statements
 # TODO: Deal with different LIMIT sql flavours
 
 class Database{
@@ -25,6 +25,21 @@ class Database{
       $where = ' where '.$TBL_ID.'="'.$id.'"';
     } else {
       $where = ' where '.$TBL_ID.'='.$id;
+    }
+    $sql = 'select * from '.$TBL_NAME.$where;
+    #echo '<p>'.$sql."</p>\n";
+    $resp = $this->db->query($sql);
+    return $resp;
+  }
+
+  public function getByFilter($column, $value){
+    include('config.php');
+    ## TODO: Solve column type...
+    ## TODO: Check if column exists...
+    if ($TBL_ID_TYPE == 'text'){
+      $where = ' where '.$column.'="'.$value.'"';
+    } else {
+      $where = ' where '.$column.'='.$value;
     }
     $sql = 'select * from '.$TBL_NAME.$where;
     #echo '<p>'.$sql."</p>\n";

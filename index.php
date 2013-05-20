@@ -46,6 +46,23 @@ $app->get('/feature/:id', function ($id){
     echo json_encode($a, JSON_NUMERIC_CHECK);
 });
 
+# Filter by any column of the table
+$app->get('/feature/:column/:value', function ($column, $value){
+
+    include('config.php');
+    $db = new Database();
+    #echo "<h1>Feature $id </h1>";
+    $resp = $db->getByFilter($column, $value);
+   # while ($r = $resp->fetch()){
+   #   print_r($r);
+   # }
+    $json_conv = new GeoJSON();
+    $a = $json_conv->createJson($resp->fetchAll(PDO::FETCH_ASSOC), $TBL_X, $TBL_Y);
+    header('Content-type: application/json');
+    #echo '<p>['.json_encode($a, JSON_NUMERIC_CHECK).']</p>';
+    echo json_encode($a, JSON_NUMERIC_CHECK);
+});
+
 $app->run();
 
 ?>

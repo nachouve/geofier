@@ -5,12 +5,12 @@
  * Connection parameters
  */
 
-$DB_TYPE='pgsql'; 	# pgsql|mysql|sqlite
-$DB_HOST='localhost'; 	# for sqlite path to the sqlite_db file
-$DB_PORT='5432'; 	# not set in SQLite
-$DB_NAME='test_db'; 	# not set in SQLite
-$DB_USER='test_user'; 	# not set in SQLite
-$DB_PASS='test_pwd'; 	#not set in SQLite
+$DB_TYPE='pgsql'; 	# pgsql|mysql|sqlite|oracle
+$DB_HOST='localhost'; 	# In SQLite set the path to sqlite_db file
+$DB_PORT='5432'; 	# Not set in SQLite. Normally ports are 5432(pgsql), 3306(mysql), 1521(oracle)
+$DB_NAME='test_db'; 	# Not set in SQLite. In Oracle set the SID here.
+$DB_USER='test_user'; 	# Not set in SQLite
+$DB_PASS='test_pwd'; 	# Not set in SQLite
 
 /*
  * Parameters of the table to be served
@@ -18,6 +18,7 @@ $DB_PASS='test_pwd'; 	#not set in SQLite
 
 $TBL_NAME='my_nongeo_table';
 $TBL_ID='gid';
+$TBL_ID_TYPE='text'	# text|numeric
 $TBL_X='coorx';
 $TBL_Y='coory';
 

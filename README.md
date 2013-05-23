@@ -40,7 +40,10 @@ Unless otherwise stated, all code are licensed under the [GPL3 License][].
 
 * PHP >= 5.3.1
 * PHP PDO ( http://www.php.net/manual/en/book.pdo.php ): to DB access
+* PHP_OCI for Oracle DB access
 * Slim PHP micro framework ( http://www.slimframework.com/ ): to create REST API
+
+Depending of your db, you need install php5-pgsql, php5-mysql, php5-sqlite and/or php-oci8. Please, ensure you have properlly installed and working with your web server.
 
 ### Installation and Usage
 
@@ -59,7 +62,11 @@ After installation, you must changes parameters on 'config.php' file to point yo
 
 At this moment, you can access to the GeoJSON from your data and using in on Openlayers or Leaftet.
 
-Test it with URLs like:
+Test with the following URLs:
+- http://localhost/mygeoservice/index.php/hello/any_name
+- http://localhost/mygeoservice/index.php/testdb
+
+Use it with URLs like:
 - http://localhost/mygeoservice/index.php/features 
 - http://localhost/mygeoservice/index.php/feature/1 
 
@@ -67,11 +74,12 @@ Configure the Geojson layers to point the service of the 'test/ol.html' example.
 
 ### Geofier API
 
-**Geofier** API has two functions by default:
-- GET '/feaures': return all features of the table
-- GET '/feature/[id]': return feature/s with that [id]
-- GET '/feature/[column]/[value]': return feature/s where "column" equals to "value"
+**Geofier** API has 3 functions by default:
+- GET **'/feaures'**: return all features of the table
+- GET **'/feature/[id]'**: return feature/s with that [id]
+- GET **'/feature/[column]/[value]'**: return feature/s where "column" equals to "value"
 
 ### Extend Geofier API
 
 You can do it easily using Slim framework. Take a look on the index.php to see examples of '$app->get()' and the calls to Database.php functions.
+

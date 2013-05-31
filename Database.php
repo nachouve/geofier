@@ -111,6 +111,12 @@ class Database{
       oci_execute($resp);
       oci_fetch_all($resp, $rows, null, null, OCI_FETCHSTATEMENT_BY_ROW + OCI_ASSOC);
     }
+    ## TODO This are not working
+    foreach($rows as $k=>$v){
+	#echo $k.'-'.$v;
+       if (in_array($v, $IGNORE_COLUMNS)) unset($rows[$k]);
+    }
+
     return $rows;
   }
 

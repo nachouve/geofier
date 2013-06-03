@@ -43,5 +43,127 @@
             "rest",
             "router"
         ]
+    },
+    {
+        "name": "j4mie/idiorm",
+        "version": "v1.3.0",
+        "version_normalized": "1.3.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/j4mie/idiorm",
+            "reference": "v1.3.0"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/j4mie/idiorm/zipball/v1.3.0",
+            "reference": "v1.3.0",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.2.0"
+        },
+        "time": "2013-01-31 12:19:07",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "classmap": [
+                "idiorm.php"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "BSD-2-Clause",
+            "BSD-3-Clause",
+            "BSD-4-Clause"
+        ],
+        "authors": [
+            {
+                "name": "Simon Holywell",
+                "email": "treffynnon@php.net",
+                "homepage": "http://simonholywell.com",
+                "role": "Maintainer"
+            },
+            {
+                "name": "Jamie Matthews",
+                "email": "jamie.matthews@gmail.com",
+                "homepage": "http://j4mie.org",
+                "role": "Developer"
+            },
+            {
+                "name": "Durham Hale",
+                "email": "me@durhamhale.com",
+                "homepage": "http://durhamhale.com",
+                "role": "Maintainer"
+            }
+        ],
+        "description": "A lightweight nearly-zero-configuration object-relational mapper and fluent query builder for PHP5",
+        "homepage": "http://j4mie.github.com/idiormandparis",
+        "keywords": [
+            "idiorm",
+            "orm",
+            "query builder"
+        ]
+    },
+    {
+        "name": "j4mie/paris",
+        "version": "v1.3.0",
+        "version_normalized": "1.3.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/j4mie/paris",
+            "reference": "v1.3.0"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/j4mie/paris/zipball/v1.3.0",
+            "reference": "v1.3.0",
+            "shasum": ""
+        },
+        "require": {
+            "j4mie/idiorm": "1.3.*",
+            "php": ">=5.2.0"
+        },
+        "time": "2013-01-31 12:20:40",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "classmap": [
+                "paris.php"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "BSD-2-Clause",
+            "BSD-3-Clause",
+            "BSD-4-Clause"
+        ],
+        "authors": [
+            {
+                "name": "Simon Holywell",
+                "email": "treffynnon@php.net",
+                "homepage": "http://simonholywell.com",
+                "role": "Maintainer"
+            },
+            {
+                "name": "Jamie Matthews",
+                "email": "jamie.matthews@gmail.com",
+                "homepage": "http://j4mie.org",
+                "role": "Developer"
+            },
+            {
+                "name": "Durham Hale",
+                "email": "me@durhamhale.com",
+                "homepage": "http://durhamhale.com",
+                "role": "Maintainer"
+            }
+        ],
+        "description": "A lightweight Active Record implementation for PHP5, built on top of Idiorm",
+        "homepage": "http://j4mie.github.com/idiormandparis",
+        "keywords": [
+            "Active Record",
+            "model",
+            "orm",
+            "paris"
+        ]
     }
 ]

@@ -47,6 +47,20 @@ class Database{
          $this->error_message = $err->getMessage();
          $this->status = 'error';
      }
+//>>>>>>> Test idiorm mode
+//      if (!$this->db){
+//        echo (oci_error());
+//      } 
+//    } else 
+//   if ($DB_TYPE=='pgsql' OR $DB_TYPE=='mysql'){
+//	ORM::configure($DB_TYPE.':host='.$DB_HOST.';dbname='.$DB_NAME.';port='.$DB_PORT);
+//	ORM::configure('username', $DB_USER);
+//	ORM::configure('password',$DB_PASS);
+//      $this->db = new PDO($DB_TYPE.':host='.$DB_HOST.
+//			';dbname='.$DB_NAME.';port='.$DB_PORT, $DB_USER, $DB_PASS);
+//      $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+//      $this->db->setAttribute(PDO::ATTR_TIMEOUT, $QUERY_TIMEOUT);
+//   }
   }
 
  public function ignoreFields($rows){

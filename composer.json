@@ -1,0 +1,8 @@
+{
+    "require": {
+        "j4mie/idiorm": "1.*",
+        "j4mie/paris": "1.*",
+        "slim/slim": "2.*",
+	"jsor/proj4php": "dev-master"
+    }
+}

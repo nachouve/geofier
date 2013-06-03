@@ -5,10 +5,10 @@
  * Connection parameters
  */
 
-$DB_TYPE='pgsql'; 	# pgsql|mysql|sqlite|oracle
-$DB_HOST='localhost'; 	# In SQLite set the path to sqlite_db file
+$DB_TYPE='sqlite'; 	# pgsql|mysql|sqlite|oracle
+$DB_HOST='/var/tmp/geofier/test/test_db'; 	# In SQLite set the path to sqlite_db file
 $DB_PORT='5432'; 	# Not set in SQLite. Normally ports are 5432(pgsql), 3306(mysql), 1521(oracle)
-$DB_NAME='test_db'; 	# Not set in SQLite. In Oracle set the SID here.
+$DB_NAME='/var/tmp/geofier/test/test_db'; 	# Not set in SQLite. In Oracle set the SID here.
 $DB_USER='test_user'; 	# Not set in SQLite
 $DB_PASS='test_pwd'; 	# Not set in SQLite
 
@@ -16,11 +16,20 @@ $DB_PASS='test_pwd'; 	# Not set in SQLite
  * Parameters of the table to be served
  */
 
-$TBL_NAME='my_nongeo_table';
-$TBL_ID='gid';
-$TBL_ID_TYPE='text'	# text|numeric
-$TBL_X='coorx';
-$TBL_Y='coory';
+$TBL_NAME='aforos';
+$TBL_ID='idestacion';
+$TBL_ID_TYPE='text';	# text|numeric
+$TBL_X='xutm';
+$TBL_Y='yutm';
+
+$GEOM_SRS='EPSG:25829';
+$TO_SRS='EPSG:900913';
+
+/**
+ * $IGNORE_COLUMNS array has columns names that will not be
+ *   included on the output.
+ */
+$IGNORE_COLUMNS=array('GEOMETRY', 'the_geom', 'OGC_FID','caracteris');
 
 
 /**

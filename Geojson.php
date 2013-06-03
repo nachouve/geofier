@@ -2,12 +2,23 @@
 
 class GeoJSON {
 
-  public function __construct(){
+  private $in_proj;
+  private $out_proj;
 
+//  public function __construct(){
+
+//  }
+
+  public function __construct($in_srs, $out_srs){
+    include_once("vendor/proj4php/proj4php.php");
+     $proj4 = new Proj4php();
+     $this->in_proj = new Proj4phpProj($in_srs, $proj4);
+     $this->out_proj = new Proj4phpProj($out_srs, $proj4);
   }
 
   public function createJson($resp_array,$x,$y){
     # Build GeoJSON feature collection array
+
     $geojson = array(
       'type' => 'FeatureCollection',
       'features' => array()
@@ -17,8 +28,18 @@ class GeoJSON {
     #$data = $resp_array;#array_combine($header, $row);
     #print_r ($resp_array[0]);
     #print_r ($data);
+    if ($this->in_proj != $this->out_proj) {
+      #Init proj4 if needed
+      $proj4 = new Proj4php();
+    }	
     foreach($resp_array as $data) {
         $properties = $data;
+	if ($proj4){
+	   $pointSrc = new proj4phpPoint($data[$x],$data[$y]);
+	   $pointDest = $proj4->transform($this->in_proj, $this->out_proj, $pointSrc);
+           $p_x = $pointDest->x;
+	   $p_y = $pointDest->y;
+        }
         # Remove x and y fields from properties (optional)
         #unset($properties['x']);
         #unset($properties['y']);
@@ -28,8 +49,8 @@ class GeoJSON {
             'geometry' => array(
                 'type' => 'Point',
                 'coordinates' => array(
-                    $data[$x],
-                    $data[$y]
+                    $p_x,
+                    $p_y
                 )
             ),
             'properties' => $properties

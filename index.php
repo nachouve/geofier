@@ -27,7 +27,7 @@ $app->get('/features', function (){
     $db = new Database();
     #echo "<h1>Feature All </h1>";
     $resp = $db->getAll();
-    $json_conv = new GeoJSON();
+    $json_conv = new GeoJSON($GEOM_SRS,$TO_SRS);
     #var_dump($resp);
     $a = $json_conv->createJson($resp, $TBL_X, $TBL_Y);
     header('Content-type: application/json');
@@ -43,7 +43,7 @@ $app->get('/feature/:id', function ($id){
     $db = new Database();
     #echo "<h1>Feature $id </h1>";
     $resp = $db->getID($id);
-    $json_conv = new GeoJSON();
+    $json_conv = new GeoJSON($GEOM_SRS,$TO_SRS);
     $a = $json_conv->createJson($resp, $TBL_X, $TBL_Y);
     header('Content-type: application/json');
     #echo '<p>['.json_encode($a, JSON_NUMERIC_CHECK).']</p>';
@@ -57,7 +57,7 @@ $app->get('/feature/:column/:value', function ($column, $value){
     $db = new Database();
     #echo "<h1>Feature Filter By $column </h1>";
     $resp = $db->getByFilter($column, $value);
-    $json_conv = new GeoJSON();
+    $json_conv = new GeoJSON($GEOM_SRS,$TO_SRS);
     $a = $json_conv->createJson($resp, $TBL_X, $TBL_Y);
     header('Content-type: application/json');
     #echo '<p>['.json_encode($a, JSON_NUMERIC_CHECK).']</p>';

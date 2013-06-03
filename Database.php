@@ -106,6 +106,7 @@ class Database{
   public function getAll(){
     include('config.php');
     $sql = 'select * from '.$TBL_NAME;
+    $where = '';
      if ($MAX_FEATS>-1){
 	if ($DB_TYPE != 'oracle') {
 	  $limit = ' LIMIT '.$MAX_FEATS;
@@ -126,10 +127,13 @@ class Database{
       oci_execute($resp);
       oci_fetch_all($resp, $rows, null, null, OCI_FETCHSTATEMENT_BY_ROW + OCI_ASSOC);
     }
-    ## TODO This are not working
-    foreach($rows as $k=>$v){
-	#echo $k.'-'.$v;
-       if (in_array($v, $IGNORE_COLUMNS)) unset($rows[$k]);
+    ## TODO This are not very optimized
+    foreach($rows as $row_num=>$row){
+	foreach ($row as $k=>$v){
+           if (in_array($k, $IGNORE_COLUMNS)) {
+		unset($rows[$row_num][$k]);
+	   }
+	}
     }
 
     return $rows;

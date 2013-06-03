@@ -28,18 +28,21 @@ class GeoJSON {
     #$data = $resp_array;#array_combine($header, $row);
     #print_r ($resp_array[0]);
     #print_r ($data);
-    if ($this->in_proj != $this->out_proj) {
+    if ($this->in_proj->srsCode != $this->out_proj->srsCode) {
       #Init proj4 if needed
       $proj4 = new Proj4php();
     }	
     foreach($resp_array as $data) {
         $properties = $data;
-	if ($proj4){
+	if (isset($proj4)){
 	   $pointSrc = new proj4phpPoint($data[$x],$data[$y]);
 	   $pointDest = $proj4->transform($this->in_proj, $this->out_proj, $pointSrc);
            $p_x = $pointDest->x;
 	   $p_y = $pointDest->y;
-        }
+        } else {
+	   $p_x = $data[$x];
+	   $p_y = $data[$y];
+	}
         # Remove x and y fields from properties (optional)
         #unset($properties['x']);
         #unset($properties['y']);

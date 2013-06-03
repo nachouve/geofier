@@ -83,7 +83,7 @@ class Database{
 	if ($DB_TYPE != 'oracle') {
 	  $limit = ' LIMIT '.$MAX_FEATS;
 	} else {
-    	  $limit = ' WHERE ROWNUM <= '.$MAX_FEATS;
+    	  $limit = ' AND ROWNUM <= '.$MAX_FEATS;
 	}	
     }
 
@@ -128,12 +128,14 @@ class Database{
       oci_fetch_all($resp, $rows, null, null, OCI_FETCHSTATEMENT_BY_ROW + OCI_ASSOC);
     }
     ## TODO This are not very optimized
-    foreach($rows as $row_num=>$row){
+    if (isset($IGNORE_COLUMNS)){
+      foreach($rows as $row_num=>$row){
 	foreach ($row as $k=>$v){
            if (in_array($k, $IGNORE_COLUMNS)) {
 		unset($rows[$row_num][$k]);
 	   }
 	}
+      }
     }
 
     return $rows;

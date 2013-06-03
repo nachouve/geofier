@@ -35,7 +35,8 @@ class GeoJSON {
     foreach($resp_array as $data) {
         $properties = $data;
 	if (isset($proj4)){
-	   $pointSrc = new proj4phpPoint($data[$x],$data[$y]);
+	   $pointSrc = new proj4phpPoint(str_replace(',','.',$data[$x]),
+					 str_replace(',','.',$data[$y]));
 	   $pointDest = $proj4->transform($this->in_proj, $this->out_proj, $pointSrc);
            $p_x = $pointDest->x;
 	   $p_y = $pointDest->y;

@@ -5,7 +5,12 @@ require 'vendor/autoload.php';
 require_once('Database.php');
 require_once('Geojson.php');
 
-$app = new \Slim\Slim();
+$app = new \Slim\Slim(
+array(
+    'debug' => true,
+    'mode' => 'development'
+)
+);
 
 # Test function
 $app->get('/hello/:name', function ($name) {
@@ -21,49 +26,60 @@ $app->get('/testdb', function () {
     exit(0);
 });
 
-$app->get('/features', function (){
 
+function toJSON($resp){
     include('config.php');
-    $db = new Database();
-    #echo "<h1>Feature All </h1>";
-    $resp = $db->getAll();
     $json_conv = new GeoJSON($GEOM_SRS,$TO_SRS);
     #var_dump($resp);
     $a = $json_conv->createJson($resp, $TBL_X, $TBL_Y);
     header('Content-type: application/json');
     #echo '<p>['.json_encode($a, JSON_NUMERIC_CHECK).']</p>';
-    echo json_encode($a, JSON_NUMERIC_CHECK);
+    return json_encode($a, JSON_NUMERIC_CHECK);
+}
 
-});
+function getAllFeatures(){
+    include('config.php');
+    $db = new Database();
+    #echo "<h1>Feature All </h1>";
+    $resp = $db->getAll();
+    echo toJSON($resp);
+}
 
-
-$app->get('/feature/:id', function ($id){
-
+function getFeatureID($id){
     include('config.php');
     $db = new Database();
     #echo "<h1>Feature $id </h1>";
     $resp = $db->getID($id);
-    $json_conv = new GeoJSON($GEOM_SRS,$TO_SRS);
-    $a = $json_conv->createJson($resp, $TBL_X, $TBL_Y);
-    header('Content-type: application/json');
-    #echo '<p>['.json_encode($a, JSON_NUMERIC_CHECK).']</p>';
-    echo json_encode($a, JSON_NUMERIC_CHECK);
-});
+    echo toJSON($resp);
+}
+
+$app->get('/features', getAllFeatures);
+
+$app->get('/feature/:id', getFeatureID);
 
 # Filter by any column of the table
 $app->get('/feature/:column/:value', function ($column, $value){
-
     include('config.php');
     $db = new Database();
     #echo "<h1>Feature Filter By $column </h1>";
     $resp = $db->getByFilter($column, $value);
-    $json_conv = new GeoJSON($GEOM_SRS,$TO_SRS);
-    $a = $json_conv->createJson($resp, $TBL_X, $TBL_Y);
-    header('Content-type: application/json');
-    #echo '<p>['.json_encode($a, JSON_NUMERIC_CHECK).']</p>';
-    echo json_encode($a, JSON_NUMERIC_CHECK);
+    echo toJSON($resp);
 });
 
 $app->run();
+
+
+if (isset($argv[1])){
+   $debug=$argv[1];
+   print "\n".$debug."\n";
+   if ($debug=='all'){
+	getAllFeatures();
+   }
+   if ($debug=='id1'){
+	getFeatureID(431);
+   }
+
+}
+
 
 ?>

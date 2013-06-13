@@ -38,6 +38,21 @@ class Database{
    }
   }
 
+ public function ignoreFields($rows){
+    include('config.php');
+    ## TODO This are not very optimized
+    if (isset($IGNORE_COLUMNS)){
+      foreach($rows as $row_num=>$row){
+	foreach ($row as $k=>$v){
+           if (in_array($k, $IGNORE_COLUMNS)) {
+		unset($rows[$row_num][$k]);
+	   }
+	}
+      }
+    }
+    return $rows;
+  }
+
   public function getID($id){
     include('config.php');
     if (!isset($TBL_ID_TYPE) || $TBL_ID_TYPE == 'text'){
@@ -66,6 +81,7 @@ class Database{
       oci_execute($resp);
       oci_fetch_all($resp, $rows, null, null, OCI_FETCHSTATEMENT_BY_ROW + OCI_ASSOC);
     }
+    $rows = $this->ignoreFields($rows);
     return $rows;
   }
 
@@ -100,6 +116,7 @@ class Database{
       oci_execute($resp);
       oci_fetch_all($resp, $rows, null, null, OCI_FETCHSTATEMENT_BY_ROW + OCI_ASSOC);
     }
+    $rows = $this->ignoreFields($rows);
     return $rows;
   }
 
@@ -127,19 +144,12 @@ class Database{
       oci_execute($resp);
       oci_fetch_all($resp, $rows, null, null, OCI_FETCHSTATEMENT_BY_ROW + OCI_ASSOC);
     }
-    ## TODO This are not very optimized
-    if (isset($IGNORE_COLUMNS)){
-      foreach($rows as $row_num=>$row){
-	foreach ($row as $k=>$v){
-           if (in_array($k, $IGNORE_COLUMNS)) {
-		unset($rows[$row_num][$k]);
-	   }
-	}
-      }
-    }
-
+    $rows = $this->ignoreFields($rows);
     return $rows;
   }
+
+
+
 
 }
 

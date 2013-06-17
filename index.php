@@ -12,6 +12,10 @@ array(
 )
 );
 
+$app->get('/', function() use ($app){
+    $app->render('intro.php');
+});
+
 # Test function
 $app->get('/hello/:name', function ($name) {
     echo "Hello, $name";

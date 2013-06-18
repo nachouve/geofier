@@ -53,14 +53,18 @@ class Database{
     return $rows;
   }
 
-  public function getLimit(){
+  public function getLimit($where_clause){
     include('config.php');
     $limit = "";
     if ($MAX_FEATS>-1){
 	if ($DB_TYPE != 'oracle') {
 	  $limit = ' LIMIT '.$MAX_FEATS;
 	} else {
-    	  $limit = ' WHERE ROWNUM <= '.$MAX_FEATS;
+	  $with_where = ' WHERE ';
+	  if ($where_clause){
+		$with_where = ' AND ';
+	  } 
+    	  $limit = $with_where.' ROWNUM <= '.$MAX_FEATS;
 	}	
     }
     return $limit;
@@ -73,7 +77,7 @@ class Database{
     } else {
       $where = ' where '.$TBL_ID.'='.$id;
    }
-    $limit = $this->getLimit();
+    $limit = $this->getLimit($where);
     $sql = 'select * from '.$TBL_NAME.$where.$limit;
     #echo '<p>'.$sql."</p>\n";
     if ($DB_TYPE != 'oracle'){
@@ -101,7 +105,7 @@ class Database{
     } else {
       $where = ' where '.$column.'='.$value;
    }
-    $limit = $this->getLimit();
+    $limit = $this->getLimit($where);
     $sql = 'select * from '.$TBL_NAME.$where.$limit;
     #echo '<p>'.$sql."</p>\n";
     if ($DB_TYPE != 'oracle'){
@@ -123,7 +127,7 @@ class Database{
     include('config.php');
     $sql = 'select * from '.$TBL_NAME;
     $where = '';
-    $limit = $this->getLimit();
+    $limit = $this->getLimit($where);
     $sql = 'select * from '.$TBL_NAME.$where.$limit;
     #echo '<p>'.$sql."</p>\n";
     if ($DB_TYPE != 'oracle'){

@@ -83,3 +83,8 @@ Configure the Geojson layers to point the service of the 'test/ol.html' example.
 
 You can do it easily using Slim framework. Take a look on the index.php to see examples of '$app->get()' and the calls to Database.php functions.
 
+### Others concerns
+
+TODO: Geofier tries to offer JSend-compliant responses on its JSON as described on the web page: http://labs.omniti.com/labs/jsend.
+
+

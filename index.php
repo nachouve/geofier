@@ -23,11 +23,28 @@ $app->get('/hello/:name', function ($name) {
     exit(0);
 });
 
-# Test function
-$app->get('/testdb', function () {
+function testDB(){
+
     include('config.php');
     $db = new Database();
-    echo '<h1>Connection to DB '.$DB_TYPE.' with success!!!</h1>';
+    $msg['status'] = 'success';
+    $msg_text['DB_TYPE'] = $DB_TYPE;
+    $msg_text['TBL_NAME'] = $TBL_NAME;
+    $msg_text['TBL_ID'] = $TBL_ID;
+    $msg_text['TBL_ID_TYPE']=$TBL_ID_TYPE;
+    $msg_text['TBL_X']=$TBL_X;
+    $msg_text['TBL_Y']=$TBL_Y;
+    $msg_text['GEOM_SRS']=$GEOM_SRS;
+    $msg_text['TO_SRS']=$TO_SRS;
+    $msg_text['IGNORE_COLUMNS']=$IGNORE_COLUMNS;
+    $msg['data'] = $msg_text;
+    echo json_encode($msg);
+
+}
+
+# Test function
+$app->get('/testdb', function () {
+    testDB();
     exit(0);
 });
 
@@ -83,7 +100,6 @@ if (isset($argv[1])){
    if ($debug=='id1'){
 	getFeatureID(431);
    }
-
 }
 
 

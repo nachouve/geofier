@@ -1,30 +1,41 @@
 <html>
 <head>
-
+<style>
+.api_wp:hover {
+    font-weight: bold;
+    color: blue;
+}
+</style>
 <script src="js/jquery-1.10.1.min.js"></script> 
 <script>
 $(document).ready(function(){
 
+function getGeofierBaseURI(evt){
+    return evt.currentTarget.baseURI.replace('/rest.php','');
+}
+
 $(".api_wp").click(function(a){
-	console.log(a);
-	var uri = a.currentTarget.baseURI;
+    var uri = getGeofierBaseURI(a);
 	var obj = a.currentTarget;
-	$.get(uri+"/"+$(obj).attr("href"),
+    var query_uri = uri+"/"+$(obj).attr("href");
+	$.get(query_uri,
 	    null,
  	    function(response){
+        $("#query").html(query_uri);
 		$("#result").text(response);
 	    }
 	);
 });
 
 $(":submit").click(function(a){
-	console.log(a);
-	var uri = a.currentTarget.baseURI;
+    var uri = getGeofierBaseURI(a);
 	var func = "index.php/feature";
 	var num_id = $("#id_num").val();
-	$.get(uri+"/"+func+"/"+num_id,
+    var query_uri = uri+"/"+func+"/"+num_id;
+	$.get(query_uri,
 	    null,
  	    function(response){
+        $("#query").html(query_uri);
 		$("#result").text(response);
 	    }
 	);
@@ -43,6 +54,10 @@ $(":submit").click(function(a){
 <li><div> FeatureID: <input id="id_num"/><input type="submit" value="Submit"></div> </li>
 <li><a href="index.php/testdb">TestDB connection</a></li>
 <li><a href="index.php/testdb">TestDB connection</a></li>
+
+
+<h1>Query</h1>
+<div id="query"></div>
 
 <h1>Result</h1>
 <div id="result" style="border: 1px gray solid;">

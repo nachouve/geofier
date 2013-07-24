@@ -27,7 +27,12 @@ function testDB(){
 
     include('config.php');
     $db = new Database();
-    $msg['status'] = 'success';
+    if ($db->status == 'ready') {
+        $msg['status'] = 'success';
+    } else {
+        $msg['status'] = 'error';
+        $msg['message'] = $db->error_message;
+    }
     $msg_text['DB_TYPE'] = $DB_TYPE;
     $msg_text['TBL_NAME'] = $TBL_NAME;
     $msg_text['TBL_ID'] = $TBL_ID;
@@ -99,6 +104,9 @@ if (isset($argv[1])){
    }
    if ($debug=='id1'){
 	getFeatureID(431);
+   }
+   if ($debug=='testdb'){
+    testDB();
    }
 }
 

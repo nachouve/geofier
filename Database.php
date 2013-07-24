@@ -2,40 +2,46 @@
 
 # TODO: Deal with big queries (http://www.php.net/manual/en/pdo.pgsqllobcreate.php, mysql different methods)
 # TODO: Use Prepared statements
-# TODO: Deal with different LIMIT sql flavours
+# TODO: Deal with different sql flavours [[try with CodeIgniter and its Active Record]]
+# TODO: Catch db exceptions on all functions
 
 class Database{
 
   private $db;
+  public $status = null;
+  public $error_message = '';
 
   public function __construct() {
     include('config.php');
+    try {
+      $this->status = 'ready';
+      if ($DB_TYPE=='sqlite'){
+          $this->db = new PDO($DB_TYPE.':'.$DB_HOST);
+        } else if ($DB_TYPE=='oracle'){
+          # testing with OCI8 (PDO_OCI is still experimental)
+          $tns = '(DESCRIPTION =
+             (ADDRESS = (PROTOCOL = TCP)
+             (HOST = '.$DB_HOST.')(PORT = '.$DB_PORT.'))
+             (CONNECT_DATA =
+             (SID='.$DB_NAME.')))';
+             # (SERVER = DEDICATED)
+             # (SERVICE_NAME = MY_SERVICE_NAME)))';
 
-   if ($DB_TYPE=='sqlite'){
-      $this->db = new PDO($DB_TYPE.':'.$DB_HOST);
-    } else 
-   if ($DB_TYPE=='oracle'){
-      # testing with OCI8 (PDO_OCI is still experimental)
-      $tns = '(DESCRIPTION =
-		 (ADDRESS = (PROTOCOL = TCP)
-		 (HOST = '.$DB_HOST.')(PORT = '.$DB_PORT.'))
-		 (CONNECT_DATA =
-		 (SID='.$DB_NAME.')))';
-		 # (SERVER = DEDICATED)
-		 # (SERVICE_NAME = MY_SERVICE_NAME)))';
+          $this->db = oci_connect($DB_USER, $DB_PASS , $tns);
 
-      $this->db = oci_connect($DB_USER, $DB_PASS , $tns);
-
-      if (!$this->db){
-        echo (oci_error());
-      } 
-    } else 
-   if ($DB_TYPE=='pgsql' OR $DB_TYPE=='mysql'){
-      $this->db = new PDO($DB_TYPE.':host='.$DB_HOST.
-			';dbname='.$DB_NAME.';port='.$DB_PORT, $DB_USER, $DB_PASS);
-      $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-      $this->db->setAttribute(PDO::ATTR_TIMEOUT, $QUERY_TIMEOUT);
-   }
+          if (!$this->db){
+            echo (oci_error());
+          } 
+        } else if ($DB_TYPE=='pgsql' OR $DB_TYPE=='mysql'){
+          $this->db = new PDO($DB_TYPE.':host='.$DB_HOST.
+                ';dbname='.$DB_NAME.';port='.$DB_PORT, $DB_USER, $DB_PASS);
+          $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+          $this->db->setAttribute(PDO::ATTR_TIMEOUT, $QUERY_TIMEOUT);
+        }
+     } catch (PDOException $err) {
+         $this->error_message = $err->getMessage();
+         $this->status = 'error';
+     }
   }
 
  public function ignoreFields($rows){
@@ -144,9 +150,6 @@ class Database{
     $rows = $this->ignoreFields($rows);
     return $rows;
   }
-
-
-
 
 }
 

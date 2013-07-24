@@ -7,6 +7,7 @@
 }
 </style>
 <script src="js/jquery-1.10.1.min.js"></script> 
+<script src="js/prettyprint.js"></script> 
 <script>
 $(document).ready(function(){
 
@@ -21,8 +22,9 @@ $(".api_wp").click(function(a){
 	$.get(query_uri,
 	    null,
  	    function(response){
-        $("#query").html(query_uri);
-		$("#result").text(response);
+        $("#query").html('<a href="'+query_uri+'">'+query_uri+'</a>');
+        var tbl = prettyPrint(JSON.parse(response), {maxDepth: 5});
+		$("#result").html(tbl);
 	    }
 	);
 });
@@ -35,8 +37,9 @@ $(":submit").click(function(a){
 	$.get(query_uri,
 	    null,
  	    function(response){
-        $("#query").html(query_uri);
-		$("#result").text(response);
+        $("#query").html('<a href="'+query_uri+'">'+query_uri+'</a>');
+        var tbl = prettyPrint(JSON.parse(response),{maxDepth: 5});
+		$("#result").html(tbl);
 	    }
 	);
 });
@@ -52,9 +55,6 @@ $(":submit").click(function(a){
 <li><div class="api_wp" href="index.php/testdb">TestDB connection</div></li>
 <li><div class="api_wp" href="index.php/features">All features</div></li>
 <li><div> FeatureID: <input id="id_num"/><input type="submit" value="Submit"></div> </li>
-<li><a href="index.php/testdb">TestDB connection</a></li>
-<li><a href="index.php/testdb">TestDB connection</a></li>
-
 
 <h1>Query</h1>
 <div id="query"></div>

@@ -4,10 +4,15 @@
 # TODO: Use Prepared statements
 # TODO: Deal with different sql flavours [[try with CodeIgniter and its Active Record]]
 # TODO: Catch db exceptions on all functions
+# TODO: Only access config.php once!!!
 
 class Database{
 
-  private $db;
+  ###TODO private!!!!!!!!!!!!!!!!!
+  ###TODO private!!!!!!!!!!!!!!!!!
+  ###TODO private!!!!!!!!!!!!!!!!!
+  ###TODO private!!!!!!!!!!!!!!!!!
+  public $db;
   public $status = null;
   public $error_message = '';
 

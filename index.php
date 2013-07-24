@@ -27,8 +27,19 @@ function testDB(){
 
     include('config.php');
     $db = new Database();
-    if ($db->status == 'ready') {
+    if ($db->status == 'ready') {        
         $msg['status'] = 'success';
+        $sql = 'select * from '.$TBL_NAME;
+        #echo '<p>'.$sql."</p>\n";        
+        $resp = $db->db->query($sql);
+        if ($resp === false) {
+            $msg['status'] = 'error';
+            $error_info = $db->db->errorInfo();
+            $msg['message'] = 'query not successful: '.$error_info[2];
+        } else if (sizeof($resp)==0){
+            $msg['status'] = 'error';
+            $msg['message'] = 'no rows in the table';
+        }
     } else {
         $msg['status'] = 'error';
         $msg['message'] = $db->error_message;
@@ -42,6 +53,7 @@ function testDB(){
     $msg_text['GEOM_SRS']=$GEOM_SRS;
     $msg_text['TO_SRS']=$TO_SRS;
     $msg_text['IGNORE_COLUMNS']=$IGNORE_COLUMNS;
+    $msg_text['MAX_FEATS']=$MAX_FEATS;
     $msg['data'] = $msg_text;
     echo json_encode($msg);
 

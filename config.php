@@ -4,11 +4,12 @@
 /*
  * Connection parameters
  */
+$CURRENT_FOLDER=realpath(dirname(__FILE__));
 
 $DB_TYPE='sqlite'; 	# pgsql|mysql|sqlite|oracle
-$DB_HOST='/var/tmp/geofier/test/test_db'; 	# In SQLite set the path to sqlite_db file
+$DB_HOST= $CURRENT_FOLDER.'/test/test_db'; 	# In SQLite set the path to sqlite_db file
 $DB_PORT='5432'; 	# Not set in SQLite. Normally ports are 5432(pgsql), 3306(mysql), 1521(oracle)
-$DB_NAME='/var/tmp/geofier/test/test_db'; 	# Not set in SQLite. In Oracle set the SID here.
+$DB_NAME=''; 	# Not set in SQLite. In Oracle set the SID here.
 $DB_USER='test_user'; 	# Not set in SQLite
 $DB_PASS='test_pwd'; 	# Not set in SQLite
 

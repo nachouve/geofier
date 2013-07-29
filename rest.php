@@ -2,9 +2,15 @@
 <head>
 <style>
 .api_wp:hover {
-    font-weight: bold;
+    font-weight: bold; 
     color: blue;
 }
+body { 
+    font-family: "Arial", "Garuda","Lucida Sans Unicode"; 
+    font-size: 0.8em; 
+    margin: 0 15%;
+}
+
 </style>
 <script src="js/jquery-1.10.1.min.js"></script> 
 <script src="js/prettyprint.js"></script> 

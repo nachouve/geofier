@@ -23,6 +23,35 @@ $app->get('/hello/:name', function ($name) {
     exit(0);
 });
 
+function idiormTest(){ 
+    include('config.php');
+
+    if ($DB_TYPE == 'sqlite'){
+        ORM::configure($DB_TYPE.':'.$DB_HOST);
+    } else {
+           $tns = '(DESCRIPTION =
+             (ADDRESS = (PROTOCOL = TCP)
+             (HOST = '.$DB_HOST.')(PORT = '.$DB_PORT.'))
+             (CONNECT_DATA =
+             (SID='.$DB_NAME.')))';
+             # (SERVER = DEDICATED)
+             # (SERVICE_NAME = MY_SERVICE_NAME)))';
+
+            // $this->db = oci_connect($DB_USER, $DB_PASS , $tns);
+            ORM::configure('oci8:dbname='.$tns);
+            ORM::configure('username', $DB_USER);
+            ORM::configure('password', $DB_PASS);
+    }
+    ORM::configure('id_columns_overrides', array(
+           $TBL_NAME -> $TBL_ID    
+    )); 
+
+    $rows = ORM::for_table($TBL_NAME)->find_many();
+    foreach ($rows as $row){
+        echo $row->$TBL_ID.'<br>'."\n";
+    }
+}
+
 function testDB(){
 
     include('config.php');
@@ -119,6 +148,9 @@ if (isset($argv[1])){
    }
    if ($debug=='testdb'){
     testDB();
+   }
+   if ($debug=='idiorm'){
+    idiormTest();
    }
 }
 

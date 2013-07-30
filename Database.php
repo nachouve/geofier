@@ -6,6 +6,8 @@
 # TODO: Catch db exceptions on all functions
 # TODO: Only access config.php once!!!
 
+require_once 'vendor/autoload.php';
+
 class Database{
 
   ###TODO private!!!!!!!!!!!!!!!!!
@@ -22,6 +24,7 @@ class Database{
       $this->status = 'ready';
       if ($DB_TYPE=='sqlite'){
           $this->db = new PDO($DB_TYPE.':'.$DB_HOST);
+          //$this->db = ORM::configure($DB_TYPE.':'.$DB_HOST);
         } else if ($DB_TYPE=='oracle'){
           # testing with OCI8 (PDO_OCI is still experimental)
           $tns = '(DESCRIPTION =

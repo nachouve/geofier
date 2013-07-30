@@ -19,11 +19,12 @@ blockquote{
     background-color:#f7f7f7;
     color:rgba(0,0,0,.75)
 }
+
 </style>
 
 </head>
 <body>
-<h1>Geofier Site</h1>
+<h1><img src="images/geofier-logo.png" height="100px"/> Geofier Site </h1>
 
 <blockquote>
   <h3>Geofier API</h3>

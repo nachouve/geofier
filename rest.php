@@ -55,17 +55,17 @@ $(":submit").click(function(a){
 </script>
 </head>
 <body>
-<h1>Geofier</h1>
+<h1><a href="/geofier"> <img src="images/geofier-logo.png" height="100px"/></a>Geofier API</h1>
 
 <h2>API</h2>
 <li><div class="api_wp" href="index.php/testdb">TestDB connection</div></li>
 <li><div class="api_wp" href="index.php/features">All features</div></li>
 <li><div> FeatureID: <input id="id_num"/><input type="submit" value="Submit"></div> </li>
 
-<h1>Query</h1>
+<h2>Query</h2>
 <div id="query"></div>
 
-<h1>Result</h1>
+<h2>Result</h2>
 <div id="result" style="border: 1px gray solid;">
 
 </div>

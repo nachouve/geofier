@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8"> 
+        <title>Geofier</title>
+<link href='http://fonts.googleapis.com/css?family=Arapey' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Economica' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Bubbler+One' rel='stylesheet' type='text/css'>
+        <link href="styles/geofier_styles.css" rel="stylesheet" type="text/css">
+
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
+        <script type="text/javascript" src="http://google-code-prettify.googlecode.com/svn/trunk/src/prettify.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                prettyPrint();
+
+                // equal height columns
+                var columns = $('div.column');
+                var max_height = 0;
+                columns.each(function () {
+                    var height = $(this).height();
+                    if (height > max_height) {
+                        max_height = height;
+                    }
+                });
+                columns.height(max_height);
+            });
+
+            var _gaq = _gaq || [];
+            _gaq.push(['_setAccount', 'UA-19998902-1']);
+            _gaq.push(['_trackPageview']);
+
+            (function() {
+                var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+                ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+                var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+            })();
+        </script>
+    </head>
+    <body>
+        <div id="main">
+	        <h1><img src="images/geofier.png" height="150px" /> Geofier</h1>
+	        <h2>A small PHP software </br>to serve GeoJSON from alphanumeric DB</h2>
+	        <h3>Create a simple REST GeoService API from alphanumeric database tables/views with coordinates and return the results in GeoJSON format.</h3>
+				 	<h5 class="pad">You won't need Spatial Databases or GIS server, neither big changes on your system.</br>It has been tested with PostgreSQL, MySQL and SQLite.</br>It is suitable for its use in OpenLayers, Leaflet, etc.</h5>
+									<h4>USE IT when...</h4>
+        					<h5>...you have some table in the DB with coordinates (columns like "x_coord" and "y_coord" or columns like "lat" and "lon"),</br>
+        					...there are users that need to see this information on maps, and interact with it,</br>
+        					...and you can not install spatial databases (for example due to restrictions of the admins).</br></h5>
+
+        			<div class="column first" style="height:521px;">
+
+        					<h4>REQUIREMENTS</h4>
+        					<ul class="p_class">
+	        					<li>PHP >= 5.3.1</li>
+	        					<li><a href="http://www.php.net/manual/en/book.pdo.php">PHP PDO</a>: to DB access</li>
+	        					<li>PHP_OCI for Oracle DB access</li>
+	        					<li><a href="http://www.slimframework.com">Slim PHP micro framework</a>: to create REST API</li>
+        					</ul></br>
+				 				  <p>Install php5-pgsql, php5-mysql, php5-sqlite and/or php-oci8 according to your DB requirements. Please, ensure it is working properly with your web server.
+									</p>
+	
+        			</div>
+
+        			<div class="column second">
+
+        					<h4>If you have a SPATIAL DB you can CONSIDER OTHER nice PROJECTS like:</h4>
+        					<ul class="p_class">
+	        					<li><a href="https://github.com/bmcbride/PHP-Database-GeoJSON">PHP-Database-GeoJSON</a></li>
+	        					<li><a href="http://featureserver.org/">FeatureServer</a></li>
+	        					<li><a href="https://code.google.com/p/georest/">GeoRest</a></li>
+        					</ul>   
+        					<h4>LICENSE</h4>
+				  				<p>Unless otherwise stated, all code are licensed under the [GPL3 License][].</p>     	
+
+        			</div>
+        </div>
+    </body>
+</html>

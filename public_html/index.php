@@ -13,7 +13,8 @@ array(
 );
 
 $app->get('/', function() use ($app){
-    $app->render('intro.php');
+    //$app->render('intro.php');
+$app->render('geofier.html');
 });
 
 

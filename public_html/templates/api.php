@@ -18,7 +18,7 @@ body {
 $(document).ready(function(){
 
 function getGeofierBaseURI(evt){
-    return evt.currentTarget.baseURI.replace('/rest.php','');
+    return evt.currentTarget.baseURI.replace('/api','');
 }
 
 $(".api_wp").click(function(a){
@@ -37,7 +37,7 @@ $(".api_wp").click(function(a){
 
 $(":submit").click(function(a){
     var uri = getGeofierBaseURI(a);
-	var func = "index.php/feature";
+	var func = "feature";
 	var num_id = $("#id_num").val();
     var query_uri = uri+"/"+func+"/"+num_id;
 	$.get(query_uri,
@@ -58,8 +58,8 @@ $(":submit").click(function(a){
 <h1><a href="/geofier"> <img src="images/geofier-logo.png" height="100px"/></a>Geofier API</h1>
 
 <h2>API</h2>
-<li><div class="api_wp" href="index.php/testdb">TestDB connection</div></li>
-<li><div class="api_wp" href="index.php/features">All features</div></li>
+<li><div class="api_wp" href="testdb">TestDB connection</div></li>
+<li><div class="api_wp" href="features">All features</div></li>
 <li><div> FeatureID: <input id="id_num"/><input type="submit" value="Submit"></div> </li>
 
 <h2>Query</h2>

@@ -1,9 +1,9 @@
 <?php
 
-require 'vendor/autoload.php';
+require '../app/vendor/autoload.php';
 
-require_once('Database.php');
-require_once('Geojson.php');
+require_once '../app/Database.php';
+require_once '../app/Geojson.php';
 
 $app = new \Slim\Slim(
 array(
@@ -17,15 +17,42 @@ $app->get('/', function() use ($app){
 });
 
 
-# Test function
-$app->get('/hello/:name', function ($name) {
-    echo "Hello, $name";
-    exit(0);
+$app->get('/api', function() use ($app){
+    $app->render('api.php');
 });
 
-function testDB(){
-
+function idiormTest(){ 
     include('config.php');
+
+    if ($DB_TYPE == 'sqlite'){
+        ORM::configure($DB_TYPE.':'.$DB_HOST);
+    } else {
+           $tns = '(DESCRIPTION =
+             (ADDRESS = (PROTOCOL = TCP)
+             (HOST = '.$DB_HOST.')(PORT = '.$DB_PORT.'))
+             (CONNECT_DATA =
+             (SID='.$DB_NAME.')))';
+             # (SERVER = DEDICATED)
+             # (SERVICE_NAME = MY_SERVICE_NAME)))';
+
+            // $this->db = oci_connect($DB_USER, $DB_PASS , $tns);
+            ORM::configure('oci8:dbname='.$tns);
+            ORM::configure('username', $DB_USER);
+            ORM::configure('password', $DB_PASS);
+    }
+    ORM::configure('id_columns_overrides', array(
+           $TBL_NAME -> $TBL_ID    
+    )); 
+
+    $rows = ORM::for_table($TBL_NAME)->find_many();
+    foreach ($rows as $row){
+        echo $row->$TBL_ID.'<br>'."\n";
+    }
+}
+
+function testDB(){
+    
+    include '../app/config.php';
     $db = new Database();
     if ($db->status == 'ready') {        
         $msg['status'] = 'success';
@@ -67,7 +94,7 @@ $app->get('/testdb', function () {
 
 
 function toJSON($resp){
-    include('config.php');
+    include '../app/config.php';
     $json_conv = new GeoJSON($GEOM_SRS,$TO_SRS);
     #var_dump($resp);
     $a = $json_conv->createJson($resp, $TBL_X, $TBL_Y);
@@ -77,7 +104,6 @@ function toJSON($resp){
 }
 
 function getAllFeatures(){
-    include('config.php');
     $db = new Database();
     #echo "<h1>Feature All </h1>";
     $resp = $db->getAll();
@@ -85,7 +111,6 @@ function getAllFeatures(){
 }
 
 function getFeatureID($id){
-    include('config.php');
     $db = new Database();
     #echo "<h1>Feature $id </h1>";
     $resp = $db->getID($id);
@@ -98,7 +123,6 @@ $app->get('/feature/:id', getFeatureID);
 
 # Filter by any column of the table
 $app->get('/feature/:column/:value', function ($column, $value){
-    include('config.php');
     $db = new Database();
     #echo "<h1>Feature Filter By $column </h1>";
     $resp = $db->getByFilter($column, $value);
@@ -110,15 +134,18 @@ $app->run();
 
 if (isset($argv[1])){
    $debug=$argv[1];
-   print "\n".$debug."\n";
+   print "\nDEBUG OPTION: ".$debug."\n";
    if ($debug=='all'){
 	getAllFeatures();
    }
-   if ($debug=='id1'){
-	getFeatureID(431);
+   if ($debug=='id'){
+	getFeatureID($argv[2]);
    }
    if ($debug=='testdb'){
     testDB();
+   }
+   if ($debug=='idiorm'){
+    idiormTest();
    }
 }
 

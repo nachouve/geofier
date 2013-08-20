@@ -28,7 +28,7 @@ blockquote{
 
 <blockquote>
   <h3>Geofier API</h3>
-  <a href="rest.php">Test API functions</a>
+  <a href="api">Test API functions</a>
 </blockquote>
 
 <blockquote>

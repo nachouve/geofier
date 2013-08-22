@@ -36,6 +36,24 @@ $app->get('/api', function() use ($app){
     $app->render('api.php');
 });
 
+# Test function
+$app->get('/testdb', function () {
+    testDB();
+    exit(0);
+});
+
+$app->get('/features', getAllFeatures);
+
+$app->get('/feature/:id', getFeatureID);
+
+$app->get('/columns', getAllColumns);
+
+# Filter by any column of the table
+$app->get('/feature/:column/:value', function ($column, $value){
+    $db = new Database();
+    $resp = $db->getByFilter($column, $value);
+    echo toJSON($resp);
+});
 
 function testDB(){
     include '../app/config.php';
@@ -72,13 +90,6 @@ function testDB(){
 
 }
 
-# Test function
-$app->get('/testdb', function () {
-    testDB();
-    exit(0);
-});
-
-
 function toJSON($resp){
     include '../app/config.php';
     $json_conv = new GeoJSON($GEOM_SRS,$TO_SRS);
@@ -101,16 +112,28 @@ function getFeatureID($id){
     echo toJSON($resp);
 }
 
-$app->get('/features', getAllFeatures);
-
-$app->get('/feature/:id', getFeatureID);
-
-# Filter by any column of the table
-$app->get('/feature/:column/:value', function ($column, $value){
+#TODO Check status...
+function getAllColumns(){
     $db = new Database();
-    $resp = $db->getByFilter($column, $value);
-    echo toJSON($resp);
-});
+    $resp = $db->getAllColumns();
+    if ($db->status == 'ready') {        
+        $msg['status'] = 'success';
+        #$resp = $db->db->query($sql);
+        if ($resp === false) {
+            $msg['status'] = 'error';
+            $error_info = $db->db->errorInfo();
+            $msg['message'] = 'query not successful: '.$error_info[2];
+        } else if (sizeof($resp)==0){
+            $msg['status'] = 'error';
+            $msg['message'] = 'no rows in the table';
+        }
+    } else {
+        $msg['status'] = 'error';
+        $msg['message'] = $db->error_message;
+    }
+    $msg['data'] = $db->getAllColumns();
+    echo json_encode($msg);
+}
 
 $app->run();
 
@@ -127,8 +150,8 @@ if (isset($argv[1])){
    if ($debug=='testdb'){
     testDB();
    }
-   if ($debug=='idiorm'){
-    idiormTest();
+   if ($debug=='cols'){
+     getAllColumns();
    }
 }
 

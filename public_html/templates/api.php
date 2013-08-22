@@ -60,6 +60,7 @@ $(":submit").click(function(a){
 <h2>API</h2>
 <li><div class="api_wp" href="testdb">TestDB connection</div></li>
 <li><div class="api_wp" href="features">All features</div></li>
+<li><div class="api_wp" href="columns">Columns</div></li>
 <li><div> FeatureID: <input id="id_num"/><input type="submit" value="Submit"></div> </li>
 
 <h2>Query</h2>

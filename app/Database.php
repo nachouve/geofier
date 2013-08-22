@@ -16,33 +16,33 @@ class Database{
   public $error_message = '';
 
   public function __construct() {
-    include('config.php');
+      include('config.php');
       $this->status = 'ready';
       if ($DB_TYPE=='sqlite'){
           ORM::configure($DB_TYPE.':'.$DB_HOST);
-   } else { //($DB_TYPE=='pgsql' OR $DB_TYPE=='mysql'){
-	ORM::configure($DB_TYPE.':host='.$DB_HOST.';dbname='.$DB_NAME.';port='.$DB_PORT);
-	ORM::configure('username', $DB_USER);
-	ORM::configure('password',$DB_PASS);
-   }
-    $this->db = ORM::get_db();
-    ORM::configure('id_column_overrides', array(
+      } else { //($DB_TYPE=='pgsql' OR $DB_TYPE=='mysql'){
+	  ORM::configure($DB_TYPE.':host='.$DB_HOST.';dbname='.$DB_NAME.';port='.$DB_PORT);
+	  ORM::configure('username', $DB_USER);
+	  ORM::configure('password',$DB_PASS);
+      }
+      ORM::configure('id_column_overrides', array(
            $TBL_NAME => $TBL_ID 
-    ));
-    ORM::configure('return_result_sets', true); 
+      ));
+      ORM::configure('return_result_sets', true); 
+      $this->db = ORM::get_db();
   }
 
  public function ignoreFields($rows){
     include('config.php');
     ## TODO This are not very optimized
     if (isset($IGNORE_COLUMNS)){
-      foreach($rows as $row_num=>$row){
-	foreach ($row as $k=>$v){
-           if (in_array($k, $IGNORE_COLUMNS)) {
-		unset($rows[$row_num][$k]);
-	   }
-	}
-      }
+        foreach($rows as $row_num=>$row){
+	    foreach ($row as $k=>$v){
+                if (in_array($k, $IGNORE_COLUMNS)) {
+		    unset($rows[$row_num][$k]);
+	        }
+	    }
+        }
     }
     return $rows;
   }
@@ -77,6 +77,14 @@ class Database{
     $rows = $this->ignoreFields($rows);
     return $rows;
   }
+
+    public function getAllColumns(){
+        include('config.php');
+        $rows = ORM::for_table($TBL_NAME)->limit(1)->find_array();
+        $rows = $this->ignoreFields($rows);
+        $keys = array_keys($rows[0]);
+        return $keys;
+    }
 
 }
 

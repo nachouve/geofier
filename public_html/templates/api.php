@@ -19,7 +19,10 @@ body {
   <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script> 
 <script>
 $(document).ready(function(){
+
 $("#tabs").tabs();
+$("#tabs").css('word-wrap', 'break-word');
+
 function getGeofierBaseURI(evt){
     return evt.currentTarget.baseURI.replace('/api','');
 }
@@ -31,6 +34,7 @@ function processResponse(response, query_uri){
     if (parsed_resp["status"]){
 	    $("#result #tabs-1").html(tbl);
 	    $("#result #tabs-2").html(response);
+	    $("#result #tabs-3").html("");
     } else {
 	    $("#result #tabs-1").html(tbl);
 	    $("#result #tabs-2").html(response);
@@ -70,13 +74,13 @@ $(":submit").click(function(a){
 <body>
 <h1><a href="/geofier"> <img src="images/geofier-logo.png" height="100px"/></a>Geofier API</h1>
 
-<h2>API</h2>
+<h2>API Resources</h2>
 <li><div class="api_wp" href="testdb">TestDB connection</div></li>
 <li><div class="api_wp" href="features">All features</div></li>
 <li><div class="api_wp" href="columns">Columns</div></li>
 <li><div> FeatureID: <input id="id_num"/><input type="submit" value="Submit"></div> </li>
 
-<h2>Query</h2>
+<h2>URL</h2>
 <div id="query"></div>
 
 <h2>Result</h2>

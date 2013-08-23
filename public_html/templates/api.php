@@ -14,15 +14,18 @@ body {
 </style>
 <script src="js/jquery-1.10.1.min.js"></script> 
 <script src="js/prettyprint.js"></script>
-  <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
-  <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
-  <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script> 
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+
+<script src="http://leafletjs.com/dist/leaflet.js"></script>
+<!--<script src="js/map.js"></script>-->
+<link rel="stylesheet" href="http://leafletjs.com/dist/leaflet.css" />
+
 <script>
 $(document).ready(function(){
 
 $("#tabs").tabs();
 $("#tabs").css('word-wrap', 'break-word');
-
 function getGeofierBaseURI(evt){
     return evt.currentTarget.baseURI.replace('/api','');
 }
@@ -38,7 +41,10 @@ function processResponse(response, query_uri){
     } else {
 	    $("#result #tabs-1").html(tbl);
 	    $("#result #tabs-2").html(response);
-	    $("#result #tabs-3").html("********** MAP HERE *************");
+	    $("#result #tabs-3").html('<div id="map" style="width: 400px; height: 400px"> </div>');
+	    $.getScript("js/map.js").done(function(script, textStatus) {
+		  loadMap(query_uri);
+	    });
     }
 }
 
@@ -56,15 +62,15 @@ $(".api_wp").click(function(a){
 
 $(":submit").click(function(a){
     var uri = getGeofierBaseURI(a);
-	var func = "feature";
-	var num_id = $("#id_num").val();
+    var func = "feature";
+    var num_id = $("#id_num").val();
     var query_uri = uri+"/"+func+"/"+num_id;
-	$.get(query_uri,
-	    null,
+    $.get(query_uri,
+        null,
         function(response){
-	        processResponse(response, query_uri);
+            processResponse(response, query_uri);
         }
-	);
+    );
 });
 
 });
@@ -80,10 +86,11 @@ $(":submit").click(function(a){
 <li><div class="api_wp" href="columns">Columns</div></li>
 <li><div> FeatureID: <input id="id_num"/><input type="submit" value="Submit"></div> </li>
 
-<h2>URL</h2>
+<h2>Description</h2>
+<h2>Service URL</h2>
 <div id="query"></div>
 
-<h2>Result</h2>
+<h2>Service Output</h2>
 <div id="result" style="border: 1px gray solid;">
   <div id="tabs">
   <ul>

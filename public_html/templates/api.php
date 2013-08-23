@@ -60,11 +60,25 @@ $(".api_wp").click(function(a){
 	);
 });
 
-$(":submit").click(function(a){
+$("#id_filter").click(function(a){
     var uri = getGeofierBaseURI(a);
     var func = "feature";
     var num_id = $("#id_num").val();
     var query_uri = uri+"/"+func+"/"+num_id;
+    $.get(query_uri,
+        null,
+        function(response){
+            processResponse(response, query_uri);
+        }
+    );
+});
+
+$("#col_filter").click(function(a){
+    var uri = getGeofierBaseURI(a);
+    var func = "feature";
+    var col_name = $("#col_name").val();
+    var col_value = $("#col_equals").val();
+    var query_uri = uri+"/"+func+"/"+col_name+"/"+col_value;
     $.get(query_uri,
         null,
         function(response){
@@ -84,7 +98,20 @@ $(":submit").click(function(a){
 <li><div class="api_wp" href="testdb">TestDB connection</div></li>
 <li><div class="api_wp" href="features">All features</div></li>
 <li><div class="api_wp" href="columns">Columns</div></li>
-<li><div> FeatureID: <input id="id_num"/><input type="submit" value="Submit"></div> </li>
+<li>
+    <div> 
+	FeatureID: <input id="id_num"/>
+	<input id="id_filter" type="submit" value="Request">
+    </div> 
+</li>
+
+<li>
+    <div> 
+	ColumnName: <input id="col_name"/> 
+	equalsto: <input id="col_equals"/> 
+        <input id="col_filter" type="submit" value="Request">
+    </div> 
+</li>
 
 <h2>Description</h2>
 <h2>Service URL</h2>

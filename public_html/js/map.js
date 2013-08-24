@@ -1,11 +1,6 @@
-function loadMap(url){
 var map = L.map('map').setView([42.845427, -8.080477], 1);
 var geojsonLayer = undefined;
 
-//L.tileLayer('http://{s}.tile.cloudmade.com/{key}/22677/256/{z}/{x}/{y}.png', {
-//              attribution: 'Map data &copy; 2011 OpenStreetMap contributors, Imagery &copy; 2012 CloudMade',
-//              key: 'BC9A493B41014CAABB98F0471D759707'
-//      }).addTo(map);
 var myStyle = {
     "color": "#ff7800",
     "weight": 5,
@@ -19,24 +14,20 @@ var minimal   = L.tileLayer(cmUrl, {styleId: 22677, attribution: cmAttr}),
     motorways = L.tileLayer(cmUrl, {styleId: 46561, attribution: cmAttr});
 
 minimal.addTo(map);
-//midnight.addTo(map);
 
+function loadMap(url){
 $.ajax({
     type: "GET",
     url: url,//"features",
     dataType: 'json',
     success: function (response) {
+	if (geojsonLayer){
+		map.removeLayer(geojsonLayer);
+	}
 	geojsonLayer = L.geoJson(response, {
 	    style: myStyle
 	}).addTo(map);
-	var baseLayers = {
-		"Minimal": minimal,
-		"Night View": midnight
-	};
-	var overlays = {
-		"Geofier": geojsonLayer
-	};
-	L.control.layers(baseLayers, overlays).addTo(map);
+	map.fitBounds(geojsonLayer.getBounds());
     }
 });
 }

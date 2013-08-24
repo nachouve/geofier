@@ -18,7 +18,6 @@ body {
 <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
 
 <script src="http://leafletjs.com/dist/leaflet.js"></script>
-<!--<script src="js/map.js"></script>-->
 <link rel="stylesheet" href="http://leafletjs.com/dist/leaflet.css" />
 
 <script>
@@ -41,10 +40,10 @@ function processResponse(response, query_uri){
     } else {
 	    $("#result #tabs-1").html(tbl);
 	    $("#result #tabs-2").html(response);
-	    $("#result #tabs-3").html('<div id="map" style="width: 400px; height: 400px"> </div>');
-	    $.getScript("js/map.js").done(function(script, textStatus) {
+	    //$("#result #tabs-3").html('<div id="map" style="width: 400px; height: 400px"> </div>');
+	    //$.getScript("js/map.js").done(function(script, textStatus) {
 		  loadMap(query_uri);
-	    });
+	    //});
     }
 }
 
@@ -130,10 +129,12 @@ $("#col_filter").click(function(a){
   <div id="tabs-2">
   </div>
   <div id="tabs-3">
+	   <div id="map" style="width: 400px; height: 400px"> </div>
   </div>
   </div> <!-- tabs -->
 </div>
 
+<script src="js/map.js"></script>
 </body>
 </html>
 

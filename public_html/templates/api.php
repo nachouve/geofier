@@ -131,7 +131,7 @@ $("#col_filter").click(function(a){
   <div id="tabs-2">
   </div>
   <div id="tabs-3">
-	   <div id="map" style="width: 400px; height: 400px"> </div>
+	   <div id="map" style="width: 700px; height: 500px"> </div>
   </div>
   </div> <!-- tabs -->
 </div>

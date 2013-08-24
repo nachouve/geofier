@@ -14,7 +14,7 @@ var minimal   = L.tileLayer(cmUrl, {styleId: 22677, attribution: cmAttr}),
     motorways = L.tileLayer(cmUrl, {styleId: 46561, attribution: cmAttr});
 
 minimal.addTo(map);
-
+//TODO Popup when click on a point
 function loadMap(url){
 $.ajax({
     type: "GET",

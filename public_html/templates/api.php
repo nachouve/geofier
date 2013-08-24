@@ -34,16 +34,18 @@ function processResponse(response, query_uri){
     var parsed_resp = JSON.parse(response);
     var tbl = prettyPrint(parsed_resp, {maxDepth: 5});
     if (parsed_resp["status"]){
+	    $("#tabs").tabs('option','active',0);
+	    $("#tabs").tabs({'disabled': [2]});
+
 	    $("#result #tabs-1").html(tbl);
 	    $("#result #tabs-2").html(response);
-	    $("#result #tabs-3").html("");
-    } else {
+    } else {	    
+	    $("#tabs").tabs('enable');
+	    $("#tabs").tabs('option','active',2);
+
 	    $("#result #tabs-1").html(tbl);
 	    $("#result #tabs-2").html(response);
-	    //$("#result #tabs-3").html('<div id="map" style="width: 400px; height: 400px"> </div>');
-	    //$.getScript("js/map.js").done(function(script, textStatus) {
-		  loadMap(query_uri);
-	    //});
+	    loadMap(query_uri);
     }
 }
 

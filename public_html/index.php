@@ -25,7 +25,7 @@ $app->get('/', function() use ($app){
 });
 
 $app->get('/main', function() use ($app){
-    $app->render('intro.php');
+    $app->render('main.html');
 });
 
 $app->get('/web', function() use ($app){

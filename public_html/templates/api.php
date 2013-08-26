@@ -12,7 +12,7 @@ body {
 }
 
 </style>
-<script src="js/jquery-1.10.1.min.js"></script> 
+<script src="js/jquery-1.10.2.js"></script> 
 <script src="js/prettyprint.js"></script>
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
 <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
@@ -23,70 +23,71 @@ body {
 <script>
 $(document).ready(function(){
 
-$("#tabs").tabs();
-$("#tabs").css('word-wrap', 'break-word');
-function getGeofierBaseURI(evt){
-    return evt.currentTarget.baseURI.replace('/api','');
-}
-
-function processResponse(response, query_uri){
-    $("#query").html('<a href="'+query_uri+'">'+query_uri+'</a>');
-    var parsed_resp = JSON.parse(response);
-    var tbl = prettyPrint(parsed_resp, {maxDepth: 5});
-    if (parsed_resp["status"]){
-	    $("#tabs").tabs('option','active',0);
-	    $("#tabs").tabs({'disabled': [2]});
-
-	    $("#result #tabs-1").html(tbl);
-	    $("#result #tabs-2").html(response);
-    } else {	    
-	    $("#tabs").tabs('enable');
-	    $("#tabs").tabs('option','active',2);
-
-	    $("#result #tabs-1").html(tbl);
-	    $("#result #tabs-2").html(response);
-	    loadMap(query_uri);
+    $("#tabs").tabs();
+    $("#tabs").css('word-wrap', 'break-word');
+    function getGeofierBaseURI(evt){
+        return window.location.href.replace('/api','');
+//        return evt.currentTarget.baseURI.replace('/api','');
     }
-}
 
-$(".api_wp").click(function(a){
-    var uri = getGeofierBaseURI(a);
-	var obj = a.currentTarget;
-    var query_uri = uri+"/"+$(obj).attr("href");
-	$.get(query_uri,
-	    null,
-        function(response){
-            processResponse(response, query_uri)
-        }
-	);
-});
+    function processResponse(response, query_uri){
+        $("#query").html('<a href="'+query_uri+'">'+query_uri+'</a>');
+        var parsed_resp = $.parseJSON(response);
+        var tbl = prettyPrint(parsed_resp, {maxDepth: 5});
+        if (parsed_resp["status"]){
+            $("#tabs").tabs('option','active',0);
+            $("#tabs").tabs({'disabled': [2]});
 
-$("#id_filter").click(function(a){
-    var uri = getGeofierBaseURI(a);
-    var func = "feature";
-    var num_id = $("#id_num").val();
-    var query_uri = uri+"/"+func+"/"+num_id;
-    $.get(query_uri,
-        null,
-        function(response){
-            processResponse(response, query_uri);
-        }
-    );
-});
+            $("#result #tabs-1").html(tbl);
+            $("#result #tabs-2").html(response);
+        } else {	    
+            $("#tabs").tabs('enable');
+            $("#tabs").tabs('option','active',2);
 
-$("#col_filter").click(function(a){
-    var uri = getGeofierBaseURI(a);
-    var func = "feature";
-    var col_name = $("#col_name").val();
-    var col_value = $("#col_equals").val();
-    var query_uri = uri+"/"+func+"/"+col_name+"/"+col_value;
-    $.get(query_uri,
-        null,
-        function(response){
-            processResponse(response, query_uri);
+            $("#result #tabs-1").html(tbl);
+            $("#result #tabs-2").html(response);
+            loadMap(query_uri);
         }
-    );
-});
+    }
+
+    $(".api_wp").click(function(a){
+        var uri = getGeofierBaseURI(a);
+        var obj = a.currentTarget;
+        var query_uri = uri+"/"+$(obj).attr("href");
+        $.get(query_uri,
+            null,
+            function(response){
+                processResponse(response, query_uri)
+            }
+        );
+    });
+
+    $("#id_filter").click(function(a){
+        var uri = getGeofierBaseURI(a);
+        var func = "feature";
+        var num_id = $("#id_num").val();
+        var query_uri = uri+"/"+func+"/"+num_id;
+        $.get(query_uri,
+            null,
+            function(response){
+                processResponse(response, query_uri);
+            }
+        );
+    });
+
+    $("#col_filter").click(function(a){
+        var uri = getGeofierBaseURI(a);
+        var func = "feature";
+        var col_name = $("#col_name").val();
+        var col_value = $("#col_equals").val();
+        var query_uri = uri+"/"+func+"/"+col_name+"/"+col_value;
+        $.get(query_uri,
+            null,
+            function(response){
+                processResponse(response, query_uri);
+            }
+        );
+    });
 
 });
 

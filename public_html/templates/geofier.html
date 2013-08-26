@@ -15,15 +15,15 @@
                 prettyPrint();
 
                 // equal height columns
-                var columns = $('div.column');
-                var max_height = 0;
-                columns.each(function () {
-                    var height = $(this).height();
-                    if (height > max_height) {
-                        max_height = height;
-                    }
-                });
-                columns.height(max_height);
+              //  var columns = $('div.column');
+                //var max_height = 0;
+                //columns.each(function () {
+                  //  var height = $(this).height();
+                    //if (height > max_height) {
+                      //  max_height = height;
+                    //}
+                //});
+                //columns.height(max_height);
             });
 
             var _gaq = _gaq || [];
@@ -38,19 +38,45 @@
         </script>
     </head>
     <body>
-        <div id="main">
-	        <h1><img src="images/geofier.png" height="150px" /> Geofier</h1>
-	        <h2>A small PHP software </br>to serve GeoJSON from alphanumeric DB</h2>
-	        <h3>Create a simple REST GeoService API from alphanumeric database tables/views with coordinates and return the results in GeoJSON format.</h3>
-				 	<h5 class="pad">You won't need Spatial Databases or GIS server, neither big changes on your system.</br>It has been tested with PostgreSQL, MySQL and SQLite.</br>It is suitable for its use in OpenLayers, Leaflet, etc.</h5>
-									<h4>USE IT when...</h4>
-        					<h5>...you have some table in the DB with coordinates (columns like "x_coord" and "y_coord" or columns like "lat" and "lon"),</br>
-        					...there are users that need to see this information on maps, and interact with it,</br>
-        					...and you can not install spatial databases (for example due to restrictions of the admins).</br></h5>
+        <div class="middle">
+	        	<h1 class="font_econ"><img src="images/geofier.png" height="150px" /> Geofier</h1>
+        			<div class="column first">
+	             <h2 class="font_bub">A small PHP software </br>to serve GeoJSON from alphanumeric DB</h2>
+        			</div>
+        			<div class="column second">
+                <div id="buttons">
+	              <h5 id="first_button" class="font_bub">Demo</h5>
+	              <h5 id="second_button" class="font_bub">Download</h5>
+              </div>
+       </div>
+        <div class="middle">
+	        <h3 class="font_ara">Create a simple REST GeoService API from alphanumeric database tables/views with coordinates 
+              and return the results in GeoJSON format.</h3>
+				 	<h5 id="description">You won't need Spatial Databases or GIS server, neither big changes on your system.
+             </br>It has been tested with PostgreSQL, MySQL and SQLite.</br>It is suitable for its use in OpenLayers, Leaflet, etc.</h5>
 
-        			<div class="column first" style="height:521px;">
+   <div class="column third">
 
-        					<h4>REQUIREMENTS</h4>
+        <div id="useit">
+					<h4 class="font_ara"><p class="title_in_columns">USE IT when...</p></h4>
+        	<p>...you have some table in the DB with coordinates (columns like "x_coord" and "y_coord" or columns like "lat" and "lon"),</p>
+        	<p>...there are users that need to see this information on maps, and interact with it,</p>
+        	<p>...and you can not install spatial databases (for example due to restrictions of the admins).</p>
+        </div>
+
+        <div id="ifyouhave">
+					<h4 class="font_ara"><p class="title_in_columns">If you have a SPATIAL DB you can CONSIDER OTHER nice PROJECTS like:</p></h4>
+        					<ul class="p_class">
+	        					<li><a href="https://github.com/bmcbride/PHP-Database-GeoJSON">PHP-Database-GeoJSON</a></li>
+	        					<li><a href="http://featureserver.org/">FeatureServer</a></li>
+	        					<li><a href="https://code.google.com/p/georest/">GeoRest</a></li>
+        					</ul>
+        </div>   
+	 </div>
+   <div class="column fourth">
+
+        <div id="requirements">
+					<h4 class="font_ara"><p class="title_in_columns">REQUIREMENTS</p></h4>
         					<ul class="p_class">
 	        					<li>PHP >= 5.3.1</li>
 	        					<li><a href="http://www.php.net/manual/en/book.pdo.php">PHP PDO</a>: to DB access</li>
@@ -59,19 +85,12 @@
         					</ul></br>
 				 				  <p>Install php5-pgsql, php5-mysql, php5-sqlite and/or php-oci8 according to your DB requirements. Please, ensure it is working properly with your web server.
 									</p>
-	
-        			</div>
+				</div>
 
-        			<div class="column second">
-
-        					<h4>If you have a SPATIAL DB you can CONSIDER OTHER nice PROJECTS like:</h4>
-        					<ul class="p_class">
-	        					<li><a href="https://github.com/bmcbride/PHP-Database-GeoJSON">PHP-Database-GeoJSON</a></li>
-	        					<li><a href="http://featureserver.org/">FeatureServer</a></li>
-	        					<li><a href="https://code.google.com/p/georest/">GeoRest</a></li>
-        					</ul>   
-        					<h4>LICENSE</h4>
+        <div id="license">
+					<h4 class="font_ara"><p class="title_in_columns">LICENSE</p></h4>
 				  				<p>Unless otherwise stated, all code are licensed under the [GPL3 License][].</p>     	
+				</div>
 
         			</div>
         </div>

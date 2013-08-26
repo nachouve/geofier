@@ -1,116 +1,78 @@
 body{
-		line-height: 1.5;
-    font-size: 90%;
+		line-height: 20px;
     color: rgb(34, 34, 34);
     background: none repeat scroll 0% 0% rgb(255, 255, 255);
     font-family: 'Bubbler One', Arial,Helvetica,sans-serif;
 }
 
-h1{
-		font-size: 6em;
-		text-shadow: 2px 2px 1px rgb(200, 200, 200);
-		margin-bottom: 0px;
-		line-height: 1;
-}
+#description{padding-left:1em; color: rgb(100, 100, 100);}
+h1{font-size: 5em;}
+h2 {font-size: 1.7em;}
 
-h2 {
-		margin: 20px 0px 40px;
-		font-size: 2em;
-	  text-align:right;
-	  line-height: 1.2;
-}
+#top_bar h3 {font-size: 1.3em;}
+h4, h5 {font-size: 0.9em;}
 
-h3 {
-	  font-size: 1.3em;
-	  line-height: 1.2;
-	  margin: 0em;
-	  text-align: justify;
-}
+div.middle h1, div.middle h2, div.middle h3, {line-height: 1.2;}
 
-h4 {
-	  font-size: 1em;
-	  line-height: 1.2;
-	  margin: 2em 0em 0.5em 0em;
-	  text-align: justify;
-}
+div.middle h1, div.middle h2{text-align: center;}
+div.middle h3, div.middle h4{text-align: justify;}
 
-h5 {
-	  font-size: 1em;
-	  line-height: 1.2;
-}
+div.middle h1 {text-shadow: 2px 2px 1px rgb(200, 200, 200);	margin-bottom: 0px;	}
+div.middle h2 {margin: 20px 0px 40px;}
+div.middle h3 { margin: 0em; clear:left;}
+div.middle h4 {margin: 2em 0em 0em 0em;}
 
-h1, h2{
-	  text-align: center;
-}
+.font_econ{font-family: 'Economica', sans-serif;}
+.font_ara{font-family: 'Arapey', serif;}
+.font_bub{font-family: 'Bubbler One', sans-serif}
 
-h1{
-		font-family: 'Economica', sans-serif;
-}
+.title_in_columns{ border-bottom: 1px dotted;}
 
-h3, h4{
-		font-family: 'Arapey', serif;
-}
-
-h2, h5{
-		font-family: 'Bubbler One', sans-serif;
-		color: rgb(100, 100, 100);
-}
-
-div#main{
+div.middle{
 		width: 800px;
 		margin: 0px auto;
-		padding-top: 30px;
+		padding-top: 20px;
 		vertical-align: baseline;
 }
 
+
 /* columns..........................................................................*/
 
-div.column {
-    width: 350px;
-    float: left;
-}
-
-div.column.first {
-    margin-left: 15px;
-    padding-right: 60px;
-}
-
-div.column p {
-    text-align: justify;
-}
-
-p {
-    margin: 0px 0px 0.5em;
-}
-
-a{
-		color:rgb(100,100,100);
-}
+div.column {width: 45%; float: left;}
+div.column.first {height:150px; width: 70%;}
+div.column.first h2{line-height:1em;}
+div.column.second {clear:right; width: 30%;}
+div.column.third {padding-right: 10%; height:350px;}
+div.column.fifth {padding-right: 10%; height:350px;}
+div.column p {text-align: justify;}
+p {margin: 0px 0px 0.5em;}
+p#version{font-style:italic; color:rgb(100,100,100); font-size:0.8em;}
+a{color:rgb(0,0,0); text-decoration:none; font-weight:bold;}
 
 /* general classes for font variations..........................................................................*/
-.color_1{
-		color:rgb(100,100,100);
-}
+.color_1{color:rgb(100,100,100);}
+.color_2{color:rgb(150,150,150);}
+.p_class{font-size: 0.9em;}
 
-.color_2{
-		color:rgb(150,150,150);
-}
-
-.p_class{
-    font-size: 0.9em;
-}
-.pad{
-    padding-left:1em;
-}
 /* lists..........................................................................*/
-ul
-{
-	list-style-type: none;
-	padding: 0px;
-	margin: 0px;
-}
-ul li
-{
-	padding-left: 14px;
-	font-style:italic;
-}
+ul{list-style: inside circle;padding: 0px;margin: 0px;}
+ul li{padding: 4px;font-style:italic;color:rgb(80,80,80);}
+
+ul#about{list-style-image:url("../images/about_image.png");} 
+ul#api{list-style-image:url("../images/icon_image.png");} 
+
+/* buttons..........................................................................*/
+#buttons h5{display:inline-block; margin:5px; padding:0.5em; padding-left:35px; text-align:center; letter-spacing:0.2em;}
+#buttons h5#first_button{margin-top:40px; }
+#first_button{clear:right; background: url("../images/demo_image.png") no-repeat;}
+#first_button:hover{background: url("../images/demo_image_2.png") no-repeat; text-shadow: 2px 2px 1px rgb(200, 200, 200);}
+#second_button{background: url("../images/down_image.png") no-repeat;}
+#second_button:hover{background: url("../images/down_image_2.png") no-repeat; text-shadow: 2px 2px 1px rgb(200, 200, 200);}
+
+/*welcome page........*/
+#top_bar{background:rgb(70,70,70); display:block; height:70px;  font-size: 90%; line-height:0;}
+#top_bar img{margin:10px;}
+.welcome_column {float: left; margin:20px;text-align:center; color:white }
+p#first_line{margin-top:60px; margin-bottom:30px; font-size:1.1em;}
+
+

@@ -99,9 +99,40 @@ function toJSON($resp){
     return json_encode($a, JSON_NUMERIC_CHECK);
 }
 
+function errorPre($db, $resp){
+    $msg['status'] = $db->status;
+    if ($db->status != 'ready') {
+       $msg['status'] = 'error';
+       $msg['message'] = $db->error_message;
+    }
+    if ($resp != null){
+        if ($resp === false) {
+            $msg['status'] = 'error';
+            $error_info = $db->db->errorInfo();
+            $msg['message'] = 'query not successful: '.$error_info[2];
+        } else if (sizeof($resp)==0){
+            $msg['status'] = 'error';
+            $msg['message'] = 'no rows in the table';
+        }
+    }
+    return $msg;
+}
+
 function getAllFeatures(){
     $db = new Database();
+    $msg = errorPre($db, null);
+    if ($msg['status']=='error'){
+        echo json_encode($msg);
+        return 0;
+    };
+
     $resp = $db->getAll();
+
+    $msg = errorPre($db, $resp);
+    if ($msg['status']=='error'){
+        echo json_encode($msg);
+        return;
+    };
     echo toJSON($resp);
 }
 
@@ -137,7 +168,6 @@ function getAllColumns(){
 
 $app->run();
 
-
 if (isset($argv[1])){
    $debug=$argv[1];
    print "\nDEBUG OPTION: ".$debug."\n";
@@ -154,6 +184,5 @@ if (isset($argv[1])){
      getAllColumns();
    }
 }
-
 
 ?>

@@ -29,7 +29,12 @@ class Database{
            $TBL_NAME => $TBL_ID 
       ));
       ORM::configure('return_result_sets', true); 
-      $this->db = ORM::get_db();
+      try {
+        $this->db = ORM::get_db();
+      } catch (PDOException $err) {
+        $this->status = 'Error';
+        $this->error_message = $err->getMessage()." (CODE: ".$err->getCode().")";
+      }
   }
 
  public function ignoreFields($rows){

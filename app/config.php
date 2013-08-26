@@ -24,7 +24,7 @@ $TBL_X='xutm';
 $TBL_Y='yutm';
 
 $GEOM_SRS='EPSG:25829';
-$TO_SRS='EPSG:900913';
+$TO_SRS='EPSG:4326';
 
 /**
  * $IGNORE_COLUMNS array has columns names that will not be

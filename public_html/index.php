@@ -5,54 +5,57 @@ require '../app/vendor/autoload.php';
 require_once '../app/Database.php';
 require_once '../app/Geojson.php';
 
+$MAIN_PAGE='intro.php';
+
 $app = new \Slim\Slim(
-array(
-    'debug' => true,
-    'mode' => 'development'
-)
+    array(
+        'debug' => true,
+        'mode' => 'web_demo' //'develepment', 'web_demo', 'production'
+    )
 );
 
-$app->get('/', function() use ($app){
-    //$app->render('intro.php');
-$app->render('geofier.html');
+$app->configureMode('web_demo', function () use ($app) {
+    global $MAIN_PAGE;
+    $MAIN_PAGE = 'geofier.html';
 });
 
+$app->get('/', function() use ($app){
+    global $MAIN_PAGE;
+    $app->render($MAIN_PAGE);
+});
+
+$app->get('/main', function() use ($app){
+    $app->render('intro.php');
+});
+
+$app->get('/web', function() use ($app){
+    $app->render('geofier.html');
+});
 
 $app->get('/api', function() use ($app){
     $app->render('api.php');
 });
 
-function idiormTest(){ 
-    include('config.php');
+# Test function
+$app->get('/testdb', function () {
+    testDB();
+    exit(0);
+});
 
-    if ($DB_TYPE == 'sqlite'){
-        ORM::configure($DB_TYPE.':'.$DB_HOST);
-    } else {
-           $tns = '(DESCRIPTION =
-             (ADDRESS = (PROTOCOL = TCP)
-             (HOST = '.$DB_HOST.')(PORT = '.$DB_PORT.'))
-             (CONNECT_DATA =
-             (SID='.$DB_NAME.')))';
-             # (SERVER = DEDICATED)
-             # (SERVICE_NAME = MY_SERVICE_NAME)))';
+$app->get('/features', getAllFeatures);
 
-            // $this->db = oci_connect($DB_USER, $DB_PASS , $tns);
-            ORM::configure('oci8:dbname='.$tns);
-            ORM::configure('username', $DB_USER);
-            ORM::configure('password', $DB_PASS);
-    }
-    ORM::configure('id_columns_overrides', array(
-           $TBL_NAME -> $TBL_ID    
-    )); 
+$app->get('/feature/:id', getFeatureID);
 
-    $rows = ORM::for_table($TBL_NAME)->find_many();
-    foreach ($rows as $row){
-        echo $row->$TBL_ID.'<br>'."\n";
-    }
-}
+$app->get('/columns', getAllColumns);
+
+# Filter by any column of the table
+$app->get('/feature/:column/:value', function ($column, $value){
+    $db = new Database();
+    $resp = $db->getByFilter($column, $value);
+    echo toJSON($resp);
+});
 
 function testDB(){
-    
     include '../app/config.php';
     $db = new Database();
     if ($db->status == 'ready') {        
@@ -87,27 +90,49 @@ function testDB(){
 
 }
 
-# Test function
-$app->get('/testdb', function () {
-    testDB();
-    exit(0);
-});
-
-
 function toJSON($resp){
     include '../app/config.php';
     $json_conv = new GeoJSON($GEOM_SRS,$TO_SRS);
-    #var_dump($resp);
     $a = $json_conv->createJson($resp, $TBL_X, $TBL_Y);
     header('Content-type: application/json');
     #echo '<p>['.json_encode($a, JSON_NUMERIC_CHECK).']</p>';
     return json_encode($a, JSON_NUMERIC_CHECK);
 }
 
+function errorPre($db, $resp){
+    $msg['status'] = $db->status;
+    if ($db->status != 'ready') {
+       $msg['status'] = 'error';
+       $msg['message'] = $db->error_message;
+    }
+    if ($resp != null){
+        if ($resp === false) {
+            $msg['status'] = 'error';
+            $error_info = $db->db->errorInfo();
+            $msg['message'] = 'query not successful: '.$error_info[2];
+        } else if (sizeof($resp)==0){
+            $msg['status'] = 'error';
+            $msg['message'] = 'no rows in the table';
+        }
+    }
+    return $msg;
+}
+
 function getAllFeatures(){
     $db = new Database();
-    #echo "<h1>Feature All </h1>";
+    $msg = errorPre($db, null);
+    if ($msg['status']=='error'){
+        echo json_encode($msg);
+        return 0;
+    };
+
     $resp = $db->getAll();
+
+    $msg = errorPre($db, $resp);
+    if ($msg['status']=='error'){
+        echo json_encode($msg);
+        return;
+    };
     echo toJSON($resp);
 }
 
@@ -118,20 +143,30 @@ function getFeatureID($id){
     echo toJSON($resp);
 }
 
-$app->get('/features', getAllFeatures);
-
-$app->get('/feature/:id', getFeatureID);
-
-# Filter by any column of the table
-$app->get('/feature/:column/:value', function ($column, $value){
+#TODO Check status...
+function getAllColumns(){
     $db = new Database();
-    #echo "<h1>Feature Filter By $column </h1>";
-    $resp = $db->getByFilter($column, $value);
-    echo toJSON($resp);
-});
+    $resp = $db->getAllColumns();
+    if ($db->status == 'ready') {        
+        $msg['status'] = 'success';
+        #$resp = $db->db->query($sql);
+        if ($resp === false) {
+            $msg['status'] = 'error';
+            $error_info = $db->db->errorInfo();
+            $msg['message'] = 'query not successful: '.$error_info[2];
+        } else if (sizeof($resp)==0){
+            $msg['status'] = 'error';
+            $msg['message'] = 'no rows in the table';
+        }
+    } else {
+        $msg['status'] = 'error';
+        $msg['message'] = $db->error_message;
+    }
+    $msg['data'] = $db->getAllColumns();
+    echo json_encode($msg);
+}
 
 $app->run();
-
 
 if (isset($argv[1])){
    $debug=$argv[1];
@@ -145,10 +180,9 @@ if (isset($argv[1])){
    if ($debug=='testdb'){
     testDB();
    }
-   if ($debug=='idiorm'){
-    idiormTest();
+   if ($debug=='cols'){
+     getAllColumns();
    }
 }
-
 
 ?>

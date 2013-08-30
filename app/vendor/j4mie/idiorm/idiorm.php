@@ -284,7 +284,6 @@
                 case 'mssql':
                 case 'sybase':
                 case 'firebird':
-                case 'oci':
                     return '"';
                 case 'mysql':
                 case 'sqlite':
@@ -300,7 +299,7 @@
          * required outside the class. If multiple connections are used,
          * accepts an optional key name for the connection.
          * @param string $connection_name Which connection to use
-         * @return PDO
+         * @return ORM
          */
         public static function get_db($connection_name = self::DEFAULT_CONNECTION) {
             self::_setup_db($connection_name); // required in case this is called before Idiorm is instantiated
@@ -1261,49 +1260,6 @@
         }
 
         /**
-         * Build a SELECT statement for Oracle dialect based on the clauses that
-         * have been passed to this instance by chaining method calls.
-         */
-        protected function _build_oci_select() {
-            //Contruct a LIMIT/OFFSET clause acording with the Oracle SQL dialect
-            $oci_offset_limit = '';
-            $oci_limit = ''; 
-            $oci_offset = ''; 
-            if (!is_null($this->_offset)){
-                $oci_offset = ' ROWNUM > '.$this->_offset;
-            }
-            if (!is_null($this->_limit)){
-                if (!is_null($this->_offset)){
-                $oci_limit .=' AND ';
-                }
-                $oci_limit .= ' ROWNUM <= '.$this->_limit;
-            }
-            // Get if there is a WHERE clause on the query
-            $where = $this->_build_where();
-            if (!is_null($this->_limit) and !is_null($this->_offset)){
-                $oci_offset_limit = '';
-            } else {
-                if (strlen($where)==0){
-                    $oci_offset_limit .= 'WHERE (';
-                } else {
-                    $oci_offset_limit .= 'AND (';
-                }
-                    $oci_offset_limit .= $oci_offset.$oci_limit.')';
-            }
-            // Build and return the full SELECT statement for Oracle by concatenating
-            // the results of calling each separate builder method (except offset and limit)
-            return $this->_join_if_not_empty(" ", array(
-            $this->_build_select_start(),
-               $this->_build_join(),
-               $where,
-               $this->_build_group_by(),
-               $this->_build_having(),
-               $this->_build_order_by(),
-               $oci_offset_limit
-           ));
-        }
-        
-        /**
          * Build a SELECT statement based on the clauses that have
          * been passed to this instance by chaining method calls.
          */
@@ -1316,10 +1272,7 @@
             }
 
             // Build and return the full SELECT statement by concatenating
-            // the results of calling each separate builder method. 
-            if (self::$_db[$this->_connection_name]->getAttribute(PDO::ATTR_DRIVER_NAME) == 'oci') {
-                return _build_oci_select();
-            }
+            // the results of calling each separate builder method.
             return $this->_join_if_not_empty(" ", array(
                 $this->_build_select_start(),
                 $this->_build_join(),

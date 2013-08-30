@@ -1,0 +1,9 @@
+{
+    "require": {
+        "slim/slim": "2.*",
+        "slim/extras": "*",
+        "twig/twig": "1.*",
+        "j4mie/idiorm": "1.*",
+        "jsor/proj4php": "dev-master"
+    }
+}

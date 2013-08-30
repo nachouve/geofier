@@ -10,7 +10,7 @@ class GeoJSON {
 //  }
 
   public function __construct($in_srs, $out_srs){
-    include_once("vendor/proj4php/proj4php.php");
+//    include_once("vendor/proj4php/proj4php.php");
      $proj4 = new Proj4php();
      $this->in_proj = new Proj4phpProj($in_srs, $proj4);
      $this->out_proj = new Proj4phpProj($out_srs, $proj4);

@@ -2,7 +2,7 @@ body{
 		line-height: 20px;
     color: rgb(34, 34, 34);
     background: none repeat scroll 0% 0% rgb(255, 255, 255);
-    font-family: 'Bubbler One', Arial,Helvetica,sans-serif;
+    font-family: 'Bitter', Arial,Helvetica,sans-serif;
 }
 
 #description{padding-left:1em; color: rgb(100, 100, 100);}
@@ -27,6 +27,10 @@ div.middle h4 {margin: 2em 0em 0em 0em;}
 .font_bub{font-family: 'Bubbler One', sans-serif}
 
 .title_in_columns{ border-bottom: 1px dotted;}
+h2, h5{
+		font-family: 'Quattrocento', sans-serif;
+		color: rgb(100, 100, 100);
+}
 
 div.middle{
 		width: 800px;

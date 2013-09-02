@@ -14,6 +14,17 @@ var minimal   = L.tileLayer(cmUrl, {styleId: 22677, attribution: cmAttr}),
     motorways = L.tileLayer(cmUrl, {styleId: 46561, attribution: cmAttr});
 
 minimal.addTo(map);
+
+function popup(feature, layer) {
+     if (feature.properties) {
+         var content = '';
+         for (var colName in feature.properties){
+             content += '<b>'+colName+":</b> "+feature.properties[colName]+"<br>";
+         }
+         layer.bindPopup(content);
+     }
+}
+
 //TODO Popup when click on a point
 function loadMap(url){
 $.ajax({
@@ -25,7 +36,8 @@ $.ajax({
 		map.removeLayer(geojsonLayer);
 	}
 	geojsonLayer = L.geoJson(response, {
-	    style: myStyle
+	    style: myStyle, 
+        onEachFeature: popup
 	}).addTo(map);
 	map.fitBounds(geojsonLayer.getBounds());
     }

@@ -10,7 +10,8 @@ $MAIN_PAGE='intro.php';
 $app = new \Slim\Slim(
     array(
         'debug' => true,
-        'mode' => 'web_demo' //'develepment', 'web_demo', 'production'
+        'mode' => 'web_demo', //'develepment', 'web_demo', 'production',
+        'templates.path' => __DIR__.'/templates/',
     )
 );
 
@@ -18,6 +19,21 @@ $app->configureMode('web_demo', function () use ($app) {
     global $MAIN_PAGE;
     $MAIN_PAGE = 'geofier.html';
 });
+
+\Slim\Extras\Views\Twig::$twigOptions = array(
+    'charset'           => 'utf-8',
+#    'cache'             => 'templates/cache',
+    'auto_reload'       => true,
+    'strict_variables'  => false,
+    'autoescape'        => false
+);
+
+\Slim\Extras\Views\Twig::$twigExtensions = array(
+    'Twig_Extensions_Slim',
+);
+
+$app->view(new \Slim\Extras\Views\Twig());
+
 
 $app->get('/', function() use ($app){
     global $MAIN_PAGE;

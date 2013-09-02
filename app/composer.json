@@ -1,4 +1,12 @@
 {
+    "name": "nachouve/geofier",
+    "description": "Geofier, REST server to create a GeoJSON from a alphanumeric db"
+    "authors": [
+        {
+            "name": "Nacho Varela"
+            "email": "nachouve@gmail.com"
+        }
+    ],
     "require": {
         "slim/slim": "2.*",
         "slim/extras": "*",

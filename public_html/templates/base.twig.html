@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+     <meta charset="UTF-8"> 
+     <title>Geofier|{% block title %}Home{% endblock title %}</title>
+     <link href='http://fonts.googleapis.com/css?family=Arapey' rel='stylesheet' type='text/css'>
+     <link href='http://fonts.googleapis.com/css?family=Economica' rel='stylesheet' type='text/css'>
+     <link href='http://fonts.googleapis.com/css?family=Bubbler+One' rel='stylesheet' type='text/css'>
+     <link href="styles/geofier_styles.css" rel="stylesheet" type="text/css">
+     {% block html_head %}{% endblock html_head %}
+  </head>
+
+  <body>
+     <div id="top_bar" class="font_bub">
+       <div class="middle">
+	  <img class="welcome_column first" src="images/geofier_inverted.png" height="70px" /> 
+          <div class="welcome_column second font_econ"><h3> Geofier </h3> </div>
+          <div class="welcome_column third"><h5>A small PHP software to serve GeoJSON from alphanumeric DB</h5> </div>
+       </div>
+     </div>
+     {% block content %}
+     {% endblock content %}
+  </body>
+</html>

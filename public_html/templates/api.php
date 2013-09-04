@@ -7,12 +7,8 @@
     color: blue;
 }
 
-body { 
-    font-family: "Arial", "Garuda","Lucida Sans Unicode"; 
-    font-size: 0.8em; 
-}
-
 #functionsbox {
+    font-size: 0.8em; 
     margin: 0 15%;
 }
 </style>
@@ -49,9 +45,9 @@ $(document).ready(function(){
             $("#tabs").tabs('enable');
             $("#tabs").tabs('option','active',2);
 
+            loadMap(query_uri);
             $("#result #tabs-1").html(tbl);
             $("#result #tabs-2").html(response);
-            loadMap(query_uri);
         }
     }
 

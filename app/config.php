@@ -19,7 +19,7 @@ $DB_PASS='test_pwd'; 	# Not set in SQLite
 
 $TBL_NAME='aforos';
 $TBL_ID='idestacion';
-$TBL_ID_TYPE='text';	# text|numeric
+###$TBL_ID_TYPE='text';	# text|numeric
 $TBL_X='xutm';
 $TBL_Y='yutm';
 

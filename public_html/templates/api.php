@@ -99,7 +99,7 @@ $(document).ready(function(){
 <div id="functionsbox">
 
 <h2>API Resources</h2>
-<li><div class="api_wp" href="testdb">TestDB connection</div></li>
+<li><div class="api_wp" href="configuration">Configuration Test</div></li>
 <li><div class="api_wp" href="features">All features</div></li>
 <li><div class="api_wp" href="columns">Columns</div></li>
 <li>

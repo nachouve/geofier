@@ -53,7 +53,7 @@ $app->get('/api', function() use ($app){
 });
 
 # Test function
-$app->get('/testdb', function () {
+$app->get('/configuration', function () {
     testDB();
     exit(0);
 });
@@ -94,7 +94,7 @@ function testDB(){
     $msg_text['DB_TYPE'] = $DB_TYPE;
     $msg_text['TBL_NAME'] = $TBL_NAME;
     $msg_text['TBL_ID'] = $TBL_ID;
-    $msg_text['TBL_ID_TYPE']=$TBL_ID_TYPE;
+#    $msg_text['TBL_ID_TYPE']=$TBL_ID_TYPE;
     $msg_text['TBL_X']=$TBL_X;
     $msg_text['TBL_Y']=$TBL_Y;
     $msg_text['GEOM_SRS']=$GEOM_SRS;
@@ -193,7 +193,7 @@ if (isset($argv[1])){
    if ($debug=='id'){
 	getFeatureID($argv[2]);
    }
-   if ($debug=='testdb'){
+   if ($debug=='test'){
     testDB();
    }
    if ($debug=='cols'){

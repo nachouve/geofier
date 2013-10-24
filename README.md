@@ -64,7 +64,7 @@ At this moment, you can access to the GeoJSON from your data and using in on Ope
 
 Test with the following URLs:
 - http://localhost/mygeoservice/index.php/hello/any_name
-- http://localhost/mygeoservice/index.php/testdb
+- http://localhost/mygeoservice/index.php/configuration
 
 Use it with URLs like:
 - http://localhost/mygeoservice/index.php/features 

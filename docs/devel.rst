@@ -21,6 +21,7 @@ Tecnologías
 **Geofier** es un proyecto de software libre que usa fantásticos proyectos libres de base:
 
 * `Slim framework`_: para crear la API Rest
+* `Twig`_: motor de plantillas
 * `PDO`_: extensión PHP de abstracción da capa de acceso a datos
 * `Idiorm`_: mapeador de objectos relacionales y creador fluido de consultas
 * `Proj4php`_: adaptación  de PROJ4 para PHP
@@ -42,6 +43,7 @@ Estructura interna
 .. _tickets: https://github.com/nachouve/geofier/issues
 .. _github: https://github.com/nachouve/geofier
 .. _Slim framework: http://www.slimframework.com/
+.. _Twig: http://twig.sensiolabs.org/
 .. _PDO: http://www.php.net/manual/en/intro.pdo.php
 .. _Idiorm: http://j4mie.github.io/idiormandparis/
 .. _Proj4php: http://sourceforge.net/projects/proj4php/

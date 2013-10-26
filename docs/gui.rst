@@ -28,5 +28,5 @@ que la interfaz funcione correctamente.
 Esta GUI está construida y probada con un servidor Apache, haciendo uso de `.htaccess`. Ten encuenta que puedes
 necesitar ajustar algunos parámetros, por ejemplo, la directiva `AllowOverride`.
 
-.. _geofier/public_html/api: geofier/public_html/api
+.. _geofier/public_html/api: ../geofier/public_html/api
 

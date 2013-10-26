@@ -17,7 +17,7 @@ $app = new \Slim\Slim(
 
 $app->configureMode('web_demo', function () use ($app) {
     global $MAIN_PAGE;
-    $MAIN_PAGE = 'geofier.html';
+    $MAIN_PAGE = 'main.php';
 });
 
 \Slim\Extras\Views\Twig::$twigOptions = array(
@@ -41,11 +41,8 @@ $app->get('/', function() use ($app){
 });
 
 $app->get('/main', function() use ($app){
-    $app->render('main.html');
-});
-
-$app->get('/web', function() use ($app){
-    $app->render('geofier.html');
+   include '../app/config.php';
+   $app->render('main.php', array('geofierversion' => $GEOFIER_VERSION));
 });
 
 $app->get('/api', function() use ($app){

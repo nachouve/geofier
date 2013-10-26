@@ -1,5 +1,7 @@
 <?php
 
+$GEOFIER_VERSION=0.2;
+
 
 /*
  * Connection parameters

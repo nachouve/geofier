@@ -14,7 +14,8 @@
         		<ul id="about" class="p_class">
 	        		<li>learn more <a href="about">ABOUT</a> this project</li>
         		</ul></br>
-                        <p id="version"> Running Geofier version {{ geofierversion }}.</p>
+<!--                        <p id="version"> Running Geofier version {{ geofierversion }}.</p>-->
+                        <p id="version"> Running Geofier version 0.2.</p>
          </div>
 
          <div class="column sixth">

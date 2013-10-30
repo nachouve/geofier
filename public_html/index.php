@@ -41,8 +41,10 @@ $app->get('/', function() use ($app){
 });
 
 $app->get('/main', function() use ($app){
-   include '../app/config.php';
-   $app->render('main.php', array('geofierversion' => $GEOFIER_VERSION));
+    include '../app/config.php';
+    #TODO Twig variable is not working
+    $app->view()->setData(array('geofierversion' => $GEOFIER_VERSION));
+    $app->render('main.php');
 });
 
 $app->get('/api', function() use ($app){

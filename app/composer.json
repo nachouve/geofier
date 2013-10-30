@@ -1,6 +1,6 @@
 {
     "name": "nachouve/geofier",
-    "description": "Geofier, REST server to create a GeoJSON from a alphanumeric db",
+    "description": "Geofier, GeoJSON REST API from alphanumeric Database",
     "authors": [
         {
             "name": "Nacho Varela",

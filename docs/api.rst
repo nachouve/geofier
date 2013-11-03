@@ -1,6 +1,8 @@
 .. index::
    single: API
 
+.. _api:
+
 API
 ==========
 

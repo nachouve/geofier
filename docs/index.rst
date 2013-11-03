@@ -15,6 +15,7 @@ Contents:
    installation
    configuration
    api
+   api_usage
    gui
    devel
 

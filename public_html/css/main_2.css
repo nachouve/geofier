@@ -11,7 +11,7 @@ h1 a:hover {
 	border-width: 0px 0px 0px 0px;
 	border-color: #BF7130;
 	border-style: solid;
-	margin-top: 150px;
+	margin-top: 120px;
 }
 body {
 	background: none repeat scroll 0% 0%;
@@ -20,6 +20,8 @@ body {
 }
 a .btn .btn-default{color:red !important}
 
+.title{font-family:'Arapey'; color:#EC9730;}
+#query a {color:rgb(100,100,100); font-size:15px; font-weight:normal}
 /* ..........................................................................*/
 
 #description {

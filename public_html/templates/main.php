@@ -7,7 +7,7 @@
 			<div class="col-lg-1">
 			</div>
 			<div class="col-lg-11">
-				<h2 class="font_econ">Welcome to <a style="color:orange" href="http://nuve.hol.es/geofier/">Geofier</a></h2>
+				<h2 class="font_econ">Welcome to <a style="color:inherit" href="http://nuve.hol.es/geofier/">Geofier</a></h2>
 			</div>
 					</div>
 

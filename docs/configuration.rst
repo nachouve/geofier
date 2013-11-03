@@ -4,9 +4,13 @@
 Configuración
 =============
 
-La configuración de **Geofier** se realiza modificando el fichero 'app/config.php'.
+La configuración de **Geofier** se realiza modificando el fichero `app/config.php`.
 Este fichero es muy sencillo y está autodocumentado y debe seguir la semántida del 
 lenguaje PHP. 
+
+Por defecto, **Geofier** provee del fichero `app/config.php.demo` con
+una configuración y datos de prueba. Puedes renombrar o copiar este fichero como `app/config.php` 
+para empezar a trabajar.
 
 Parámetros básicos
 ------------------

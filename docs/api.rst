@@ -31,7 +31,7 @@ Métodos para obtener otro tipo de datos
 Resource                              Descripción
 ====================================  ============
 `GET columns`_                          devuelve las columnas disponibles en la tabla (con las que se puede hacer filtros)
-`GET test`_                             devuelve un JSON con información sobre la configuración actual de Geofier
+`GET configuration`_                             devuelve un JSON con información sobre la configuración actual de Geofier
 ====================================  ============
 
 

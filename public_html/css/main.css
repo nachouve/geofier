@@ -5,12 +5,25 @@ body{
     font-family: 'Bitter', Arial,Helvetica,sans-serif;
 }
 
+
+/* ..........................................................................*/
+.font_econ{font-family: 'Economica', sans-serif;}
+.font_ara{font-family: 'Arapey', serif;}
+.font_bub{font-family: 'Bubbler One', sans-serif}
+.font_qua{font-family: 'Quattrocento', serif;}
+h2, h5{color: rgb(70,70,70);}
+h1{font-family:'Economica'!important; letter-spacing:0.1em;}
+h2{font-family:'Arapey'!important}
+
+h1 a{color:inherit; font-weight: normal; }
+h1 a:hover{color:rgb(150,150,150); 	text-decoration: none;}
+/* ..........................................................................*/
+
+
+
 #description{padding-left:1em; color: rgb(100, 100, 100);}
-h1{font-size: 5em;}
-h2 {font-size: 1.7em;}
 
 #top_bar h3 {font-size: 1.3em;}
-h4, h5 {font-size: 0.9em;}
 
 div.middle h1, div.middle h2, div.middle h3, {line-height: 1.2;}
 

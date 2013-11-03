@@ -1,24 +1,38 @@
 <!DOCTYPE html>
 <html>
-  <head>
-     <meta charset="UTF-8"> 
-     <title>Geofier|{% block title %}Home{% endblock title %}</title>
-     <link href='http://fonts.googleapis.com/css?family=Arapey' rel='stylesheet' type='text/css'>
-     <link href='http://fonts.googleapis.com/css?family=Economica' rel='stylesheet' type='text/css'>
-     <link href='http://fonts.googleapis.com/css?family=Bubbler+One' rel='stylesheet' type='text/css'>
-     <link href="styles/geofier_styles.css" rel="stylesheet" type="text/css">
-     {% block html_head %}{% endblock html_head %}
-  </head>
+	<head>
+		<meta charset="UTF-8">
+		<title>Geofier|{% block title %}Home{% endblock title %}</title>
+		<link href='http://fonts.googleapis.com/css?family=Arapey' rel='stylesheet' type='text/css'>
+		<link href='http://fonts.googleapis.com/css?family=Economica' rel='stylesheet' type='text/css'>
+		<link href='http://fonts.googleapis.com/css?family=Bubbler+One' rel='stylesheet' type='text/css'>
+		<link href="css/main.css" rel="stylesheet" type="text/css">
+		<link href="css/bootstrap.min.css" rel="stylesheet">
+		<link href="css/bootstrap-theme.min.css" rel="stylesheet">
+		{% block html_head %}{% endblock html_head %}
+	</head>
 
-  <body>
-     <div id="top_bar" class="font_bub">
-       <div class="middle">
-          <a href="../public_html"> <img class="welcome_column first" src="images/geofier_inverted.png" height="70px" /> </a>
-          <a href="../public_html"> <div class="welcome_column second font_econ"><h3> Geofier </h3> </div></a>
-          <div class="welcome_column third"><h5>GeoJSON REST API from alphanumeric DB</h5> </div>
-       </div>
-     </div>
-     {% block content %}
-     {% endblock content %}
-  </body>
+	<body>
+
+		<div class="navbar navbar-default navbar-fixed-top">
+			<div class="jumbotran jumbo_white">
+				<div class="container container_broad">
+					<div class="navbar-header">
+						<div class="row">
+							<div class="col-lg-2">
+								<a href="../public_html"> <img src="img/geofier_3.png" height="80px" /> </a>
+							</div>
+							<div class="col-lg-10">
+								<h1><a href="../public_html"> Geofier </a><span style="font-size:20px">GeoJSON REST API from alphanumeric DB</span></h1>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--navbar-->
+
+		{% block content %}
+		{% endblock content %}
+	</body>
 </html>

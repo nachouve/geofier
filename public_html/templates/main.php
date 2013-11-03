@@ -2,7 +2,7 @@
 {% block content %}
 
      <div class="middle">
-        <p id="first_line"> Welcome to  <a href="http://nuve.hol.es/geofier/">GEOFIER</a> </p>
+        <p id="first_line"> Welcome to  <a href="http://nuve.hol.es/geofier/">Geofier</a> </p>
      </div>
 
        <div class="middle">

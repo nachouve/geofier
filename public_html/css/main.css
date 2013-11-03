@@ -1,90 +1,67 @@
 body{
-		line-height: 20px;
-    color: rgb(34, 34, 34);
-    background: none repeat scroll 0% 0% rgb(255, 255, 255);
-    font-family: 'Bitter', Arial,Helvetica,sans-serif;
+    background: none repeat scroll 0% 0%;
+    font-family: 'Quattrocento', serif; background:white;}
 }
 
 
-/* ..........................................................................*/
+
+
 .font_econ{font-family: 'Economica', sans-serif;}
 .font_ara{font-family: 'Arapey', serif;}
 .font_bub{font-family: 'Bubbler One', sans-serif}
 .font_qua{font-family: 'Quattrocento', serif;}
 h2, h5{color: rgb(70,70,70);}
-h1{font-family:'Economica'!important; letter-spacing:0.1em;}
+h1{font-size:80px}
+h1{font-family:'Economica'!important}
 h2{font-family:'Arapey'!important}
-
-h1 a{color:inherit; font-weight: normal; }
-h1 a:hover{color:rgb(150,150,150); 	text-decoration: none;}
-/* ..........................................................................*/
-
-
-
-#description{padding-left:1em; color: rgb(100, 100, 100);}
-
-#top_bar h3 {font-size: 1.3em;}
-
-div.middle h1, div.middle h2, div.middle h3, {line-height: 1.2;}
-
-div.middle h1, div.middle h2{text-align: center;}
-div.middle h3, div.middle h4{text-align: justify;}
-
-div.middle h1 {text-shadow: 2px 2px 1px rgb(200, 200, 200);	margin-bottom: 0px;	}
-div.middle h2 {margin: 20px 0px 40px;}
-div.middle h3 { margin: 0em; clear:left;}
-div.middle h4 {margin: 2em 0em 0em 0em;}
-
-.font_econ{font-family: 'Economica', sans-serif;}
-.font_ara{font-family: 'Arapey', serif;}
-.font_bub{font-family: 'Bubbler One', sans-serif}
-
-.title_in_columns{ border-bottom: 1px dotted;}
-h2, h5{
-		font-family: 'Quattrocento', sans-serif;
-		color: rgb(100, 100, 100);
-}
-
-div.middle{
-		width: 800px;
-		margin: 0px auto;
-		padding-top: 20px;
-		vertical-align: baseline;
-}
-
 
 /* columns..........................................................................*/
 
-div.column {width: 45%; float: left;}
-div.column.first {height:150px; width: 70%;}
-div.column.first h2{line-height:1em;}
-div.column.second {clear:right; width: 30%;}
-div.column.third {padding-right: 10%; height:350px;}
-div.column.fifth {padding-right: 10%; height:350px;}
-div.column p {text-align: justify;}
-p {margin: 0px 0px 0.5em;}
+
 p#version{font-style:italic; color:rgb(100,100,100); font-size:0.8em;}
-a{color:rgb(0,0,0); text-decoration:none; font-weight:bold;}
+
 
 /* general classes for font variations..........................................................................*/
 .color_1{color:rgb(100,100,100);}
 .color_2{color:rgb(150,150,150);}
 .p_class{font-size: 0.9em;}
+/* jumbos..........................................................................*/
+.jumbo_white{background:white; }
+.jumbo_orange{border-width: 0px 0px 0px 0px; border-color: #BF7130;border-style:solid; margin-top:250px;}
+.jumbo_two{border-width: 0px 0px 0px 0px; border-color: #BF7130;border-style:solid;background:white; margin-bottom:0px;}
+.jumbo_one{border-width: 0px 0px 0px 0px; border-color: #BF7130;border-style:solid;background:#FFD98d}
+.jumbotran{
+	padding-bottom: 48px;
+    padding-top: 48px;
+    color: inherit;
+    padding: 20px;
+}
+
+.container_narrow{width: 1270px;max-width: 930px;}
+.container_broad{width: 1270px;max-width: 1170px;}
+img{margin-left:30px}
 
 /* lists..........................................................................*/
 ul{list-style: inside circle;padding: 0px;margin: 0px;}
 ul li{padding: 4px;font-style:italic;color:rgb(80,80,80);}
 
-ul#about{list-style-image:url("../images/about_image.png");} 
-ul#api{list-style-image:url("../images/icon_image.png");} 
+ul#about{list-style-image:url("../img/about_image.png");} 
+ul#api{list-style-image:url("../img/icon_image.png");} 
+
+ul> li > a  h5{padding-bottom:0.8em; padding-left:35px; letter-spacing:0.2em;}
 
 /* buttons..........................................................................*/
-#buttons h5{display:inline-block; margin:5px; padding:0.5em; padding-left:35px; text-align:center; letter-spacing:0.2em;}
-#buttons h5#first_button{margin-top:40px; }
-#first_button{clear:right; background: url("../images/demo_image.png") no-repeat;}
-#first_button:hover{background: url("../images/demo_image_2.png") no-repeat; text-shadow: 2px 2px 1px rgb(200, 200, 200);}
-#second_button{background: url("../images/down_image.png") no-repeat;}
-#second_button:hover{background: url("../images/down_image_2.png") no-repeat; text-shadow: 2px 2px 1px rgb(200, 200, 200);}
+#buttons h5{display:inline-block; margin:5px; padding-bottom:20px; padding-left:35px; letter-spacing:0.2em;}
+#demo_button{background: url("../img/demo_image.png") no-repeat;}
+#demo_button:hover{background: url("../img/demo_image_2.png") no-repeat; text-shadow: 2px 2px 1px rgb(200, 200, 200);}
+#download_button{background: url("../img/down_image.png") no-repeat;}
+#download_button:hover{background: url("../img/down_image_2.png") no-repeat; text-shadow: 2px 2px 1px rgb(200, 200, 200);}
+#docum_button{background: url("../img/documentation.png") no-repeat;}
+#docum_button:hover{background: url("../img/documentation_2.png") no-repeat; text-shadow: 2px 2px 1px rgb(200, 200, 200);}
+#develop_button{background: url("../img/developement.png") no-repeat;}
+#develop_button:hover{background: url("../img/developement_2.png") no-repeat; text-shadow: 2px 2px 1px rgb(200, 200, 200);}
+#support_button{background: url("../img/support.png") no-repeat;}
+#support_button:hover{background: url("../img/support_2.png") no-repeat; text-shadow: 2px 2px 1px rgb(200, 200, 200);}
 
 /*welcome page........*/
 #top_bar{background:rgb(70,70,70); display:block; height:70px;  font-size: 90%; line-height:0;}

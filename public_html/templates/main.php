@@ -1,27 +1,30 @@
 {% extends "base.twig.html" %}
 {% block content %}
 
-     <div class="middle">
-        <p id="first_line"> Welcome to  <a href="http://nuve.hol.es/geofier/">Geofier</a> </p>
-     </div>
+<div class="jumbotran jumbo_welcome">
+	<div class="container container_extra_narrow">
+		<h2 class="font_econ">Welcome to <a href="http://nuve.hol.es/geofier/">Geofier</a></h2>
+	</div><!-- /container -->
+</div><!-- /jumbotron -->
 
-       <div class="middle">
-         <div class="column fifth">
+<div class="jumbotran jumbo_two">
+	<div class="container container_extra_narrow">
+		<div class="row">
+			<div class="col-lg-6">
+				Go to the <a href="api" class="btn btn-warning" role="button">API</a>
+			</div>
+			<div class="col-lg-6">
+				Learn more <a href="api" class="btn btn-warning" role="button">ABOUT</a> this project
+			</div>
+		</div>
 
-        		<ul id="api" class="p_class">
-	        		<li>Go to the <a href="api">API</a></li>
-        		</ul></br>
-        		<ul id="about" class="p_class">
-	        		<li>learn more <a href="about">ABOUT</a> this project</li>
-        		</ul></br>
-<!--                        <p id="version"> Running Geofier version {{ geofierversion }}.</p>-->
-                        <p id="version"> Running Geofier version 0.2.</p>
-         </div>
+	</div><!-- /container -->
 
-         <div class="column sixth">
-        		<ul class="p_class">
-	        		<li>some other text here</li>
-        		</ul></br>
-         </div>
-       </div>
+</div><!-- /jumbotron -->
+<footer>
+	<p id="version">
+		Running Geofier version 0.2.
+	</p>
+</footer>
+
 {% endblock content %}

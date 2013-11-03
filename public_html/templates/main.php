@@ -18,8 +18,6 @@
 <div class="jumbotran jumbo_two">
 	<div class="container">
 				<div class="row" style="font-family: 'Arapey'; font-size:1.2em">
-			<div class="col-lg-1">
-			</div>
 			<div class="col-lg-8">
 				Go to the <a href="api" class="btn btn-default" role="button">API</a> or learn more <a href="api" class="btn btn-default" role="button">ABOUT</a> this project
 			</div>

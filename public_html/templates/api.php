@@ -65,7 +65,7 @@
 		$("#id_filter").click(function(a) {
 			event.preventDefault();
 			var uri = getGeofierBaseURI(a);
-			uri = uri.replace('?','');
+			uri = uri.replace('?', '');
 			var func = "feature";
 			var num_id = $("#id_num").val();
 			var query_uri = uri + "/" + func + "/" + num_id;
@@ -77,7 +77,7 @@
 		$("#col_filter").click(function(a) {
 			event.preventDefault();
 			var uri = getGeofierBaseURI(a);
-			uri = uri.replace('?','');
+			uri = uri.replace('?', '');
 			var func = "feature";
 			var col_name = $("#col_name").val();
 			var col_value = $("#col_equals").val();
@@ -95,69 +95,90 @@
 {% block content %}
 <div class="jumbotran jumbo_welcome" style="font-family:'Arapey'; color:rgb(100,100,100); font-size:1.1em;">
 	<div class="container">
-		<h4 class="title">API Resources</h4>
-		<p>
-			Try one of this options to see the demo file/configuration characteristics:
-		</p>
-		<a class="btn btn-default api_wp" href="configuration" role="button">Configuration test characteritics</a>
-		<a class="btn btn-default api_wp" href="features" role="button">See all features</a>
-		<a class="btn btn-default api_wp" href="columns" role="button">See all columns</a>
 
-		<form class="form-inline" role="form">
-			<div class="form-group">
-				<input type="text" class="form-control" id="id_num" placeholder="Feature ID">
+		<div class="row">
+			<div class="col-lg-12">
+				<h4 class="title">API Resources:</h4>
+				<p>
+					Try one of this options to see the demo file/configuration characteristics:
+				</p>
 			</div>
-			<button type="submit" class="btn btn-default" id="id_filter">
-				See filter results by feature ID
-			</button>
-		</form>
+		</div>
+		<div class="row">
+			<div class="col-lg-1"></div>
+			<div class="col-lg-3">
+<ul>
+			<li>	<a class="btn btn-default api_wp" href="configuration" role="button">Configuration test characteritics</a></li>
+			<li>	<a class="btn btn-default api_wp" href="features" role="button">See all features</a></li>
+			<li>	<a class="btn btn-default api_wp" href="columns" role="button">See all columns</a></li>
+</ul>
+</div>
+			<div class="col-lg-3"><ul>
+				<li><form class="form-inline" role="form">
+					<div class="form-group">
+						<input type="text" class="form-control" id="id_num" placeholder="Feature ID">
+					</div>
+					<button type="submit" class="btn btn-default" id="id_filter">
+						See FILTER results BY feature ID
+					</button>
+				</form></li></ul>
+</div>
+			<div class="col-lg-3"><ul>
+				<li><form class="form-inline" role="form">
+					<div class="form-group">
+						<input type="text" class="form-control form-inline" id="col_name" placeholder="Column Name">
+						<input type="text" class="form-control" id="col_equals" placeholder="Value">
+					</div>
+					<button type="submit" class="btn btn-default" id="col_filter">
+						See FILTER results BY VALUE in column selected
+					</button>
+				</form></li></ul>
+							</div>
+		</div>
+		<div class="row">
+			<div class="col-lg-6">
+				<h4 class="title">Description:</h4>
+			</div>
+			<div class="col-lg-6">
+				<h4 class="title">Service URL: <span id="query"></span></h4>
 
-		<form class="form-inline" role="form">
-			<div class="form-group">
-				<input type="text" class="form-control" id="col_name" placeholder="Column Name">
-				<input type="text" class="form-control" id="col_equals" placeholder="equalsto">
 			</div>
-			<button type="submit" class="btn btn-default" id="col_filter">
-				See filter results by column
-			</button>
-		</form>
+		</div>
 
 		</br>
-<!--		<li>
-			<div class="api_wp" href="configuration">
-				Configuration Test
-			</div>
+		<!--		<li>
+		<div class="api_wp" href="configuration">
+		Configuration Test
+		</div>
 		</li>
 		<li>
-			<div class="api_wp" href="features">
-				All features
-			</div>
+		<div class="api_wp" href="features">
+		All features
+		</div>
 		</li>
 		<li>
-			<div class="api_wp" href="columns">
-				Columns
-			</div>
+		<div class="api_wp" href="columns">
+		Columns
+		</div>
 		</li>
 		<li>
-			<!--			<div>
-			FeatureID:
-			<input id="id_num"/>
-			<input id="id_filter" type="submit" value="Request">
-			</div>
-			</li>
+		<!--			<div>
+		FeatureID:
+		<input id="id_num"/>
+		<input id="id_filter" type="submit" value="Request">
+		</div>
+		</li>
 
-			<li>
-			<div>
-			ColumnName:
-			<input id="col_name"/>
-			equalsto:
-			<input id="col_equals"/>
-			<input id="col_filter" type="submit" value="Request">
-			</div>
-			</li>
-			-->
-		<h4 class="title">Description</h4>
-		<h4 class="title">Service URL <span id="query"></span></h4>
+		<li>
+		<div>
+		ColumnName:
+		<input id="col_name"/>
+		equalsto:
+		<input id="col_equals"/>
+		<input id="col_filter" type="submit" value="Request">
+		</div>
+		</li>
+		-->
 
 		<h4 class="title">Service Output</h4>
 		<div id="result" style="border: 1px gray solid;">

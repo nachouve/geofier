@@ -42,13 +42,8 @@ p#version{font-style:italic; color:rgb(100,100,100); font-size:0.8em;}
 img{margin-left:30px}
 
 /* lists..........................................................................*/
-ul{list-style: inside circle;padding: 0px;margin: 0px;}
-ul li{padding: 4px;font-style:italic;color:rgb(80,80,80);}
-
-ul#about{list-style-image:url("../img/about_image.png");} 
-ul#api{list-style-image:url("../img/icon_image.png");} 
-
-ul> li > a  h5{padding-bottom:0.8em; padding-left:35px; letter-spacing:0.2em;}
+ul{list-style-type: none;padding-left: 10px;margin: 0px;}
+ul li{padding: 4px}
 
 /* buttons..........................................................................*/
 #buttons h5{display:inline-block; margin:5px; padding-bottom:20px; padding-left:35px; letter-spacing:0.2em;}

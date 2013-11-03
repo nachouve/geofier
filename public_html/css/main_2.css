@@ -136,23 +136,13 @@ a {
 }
 
 /* lists..........................................................................*/
-ul {
-	list-style: inside circle;
-	padding: 0px;
-	margin: 0px;
-}
+
 ul li {
 	padding: 4px;
-	font-style: italic;
 	color: rgb(80,80,80);
 }
 
-ul#about {
-	list-style-image: url("../images/about_image.png");
-}
-ul#api {
-	list-style-image: url("../images/icon_image.png");
-}
+
 
 /* buttons..........................................................................*/
 #buttons h5 {

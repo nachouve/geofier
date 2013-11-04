@@ -41,5 +41,5 @@ Resource                              Descripción
 .. _GET feature/:column/:value: api/feature_column
 
 .. _GET columns: api/column
-.. _GET test: api/test
+.. _GET configuration: api/configuration
 

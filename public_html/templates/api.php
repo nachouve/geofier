@@ -53,7 +53,7 @@
 
 
 		$(".api_wp").click(function(a) {
-			event.preventDefault();
+			a.preventDefault();
 			var uri = getGeofierBaseURI(a);
 			var obj = a.currentTarget;
 			var query_uri = uri + "/" + $(obj).attr("href");
@@ -63,7 +63,7 @@
 		});
 
 		$("#id_filter").click(function(a) {
-			event.preventDefault();
+			a.preventDefault();
 			var uri = getGeofierBaseURI(a);
 			uri = uri.replace('?', '');
 			var func = "feature";

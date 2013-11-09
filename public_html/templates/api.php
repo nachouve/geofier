@@ -75,7 +75,7 @@
 		});
 
 		$("#col_filter").click(function(a) {
-			event.preventDefault();
+			a.preventDefault();
 			var uri = getGeofierBaseURI(a);
 			uri = uri.replace('?', '');
 			var func = "feature";

@@ -76,8 +76,13 @@ function testDB(){
     if ($db->status == 'ready') {        
         $msg['status'] = 'success';
         $sql = 'select * from '.$TBL_NAME;
-        #echo '<p>'.$sql."</p>\n";        
-        $resp = $db->db->query($sql);
+        #echo '<p>'.$sql."</p>\n";
+        $resp = '';
+        try { 
+            $resp = $db->db->query($sql);
+        } catch (Exception $e){
+            $resp = false;
+        }
         if ($resp === false) {
             $msg['status'] = 'error';
             $error_info = $db->db->errorInfo();

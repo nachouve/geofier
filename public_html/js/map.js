@@ -35,6 +35,10 @@ $.ajax({
 	if (geojsonLayer){
 		map.removeLayer(geojsonLayer);
 	}
+        if (response.features.length == 0){
+            $().toastmessage('showWarningToast', 'No features found.');
+            return;
+        }
 	geojsonLayer = L.geoJson(response, {
 	    style: myStyle, 
         onEachFeature: popup

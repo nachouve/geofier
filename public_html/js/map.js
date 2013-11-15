@@ -38,6 +38,8 @@ $.ajax({
         if (response.features.length == 0){
             $().toastmessage('showWarningToast', 'No features found.');
             return;
+        } else {
+            $().toastmessage('showSuccessToast', "Success");
         }
 	geojsonLayer = L.geoJson(response, {
 	    style: myStyle, 

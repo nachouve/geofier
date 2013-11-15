@@ -34,7 +34,12 @@
 			var tbl = prettyPrint(parsed_resp, {
 				maxDepth : 5
 			});
-			if (parsed_resp["status"]) {
+                        if (parsed_resp["status"]) {
+                                if (parsed_resp["status"]=="success"){
+                                    $().toastmessage('showSuccessToast', "Success");
+                                } else {
+                                    $().toastmessage('showErrorToast', "Error");
+                                }
 				$("#tabs").tabs('option', 'active', 0);
 				$("#tabs").tabs({
 					'disabled' : [2]

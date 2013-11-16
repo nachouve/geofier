@@ -17,7 +17,8 @@ $app = new \Slim\Slim(
 );
 
 $app->error(function (\Exception $e) use ($app) {
-        $app->render('error.php');
+    $app->view()->setData(array('exception' => $e));
+    $app->render('error.php');
 });
 
 $app->configureMode('web_demo', function () use ($app) {

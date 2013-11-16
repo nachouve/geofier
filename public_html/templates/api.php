@@ -89,8 +89,10 @@
 			var col_value = $("#col_equals").val();
 			var query_uri = uri + "/" + func + "/" + col_name + "/" + col_value;
 			$.get(query_uri, null, function(response) {
-				processResponse(response, query_uri);
-			});
+        		    processResponse(response, query_uri);
+                        }).fail(function(response){
+                            processResponse(response.responseText, query_uri);
+                        });
 		});
 
 	});

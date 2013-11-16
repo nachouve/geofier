@@ -2,6 +2,10 @@
 
 $GEOFIER_VERSION=0.2;
 
+/*
+ * Set Slim DEBUG_MODE=false in production environments.
+ */
+$DEBUG_MODE=true;
 
 /*
  * Connection parameters

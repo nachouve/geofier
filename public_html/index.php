@@ -6,14 +6,19 @@ require_once '../app/Database.php';
 require_once '../app/Geojson.php';
 
 $MAIN_PAGE='intro.php';
+include '../app/config.php';
 
 $app = new \Slim\Slim(
     array(
-        'debug' => true,
+        'debug' => $DEBUG_MODE,
         'mode' => 'web_demo', //'develepment', 'web_demo', 'production',
         'templates.path' => __DIR__.'/templates/',
     )
 );
+
+$app->error(function (\Exception $e) use ($app) {
+        $app->render('error.php');
+});
 
 $app->configureMode('web_demo', function () use ($app) {
     global $MAIN_PAGE;

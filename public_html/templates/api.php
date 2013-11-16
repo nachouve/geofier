@@ -65,7 +65,9 @@
 			var query_uri = uri + "/" + $(obj).attr("href");
 			$.get(query_uri, null, function(response) {
 				processResponse(response, query_uri)
-			});
+                        }).fail(function(response){
+                            processResponse(response.responseText, query_uri);
+                        });
 		});
 
 		$("#id_filter").click(function(a) {
@@ -77,7 +79,9 @@
 			var query_uri = uri + "/" + func + "/" + num_id;
 			$.get(query_uri, null, function(response) {
 				processResponse(response, query_uri);
-			});
+                        }).fail(function(response){
+                            processResponse(response.responseText, query_uri);
+                        });
 		});
 
 		$("#col_filter").click(function(a) {

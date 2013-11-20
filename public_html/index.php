@@ -53,8 +53,8 @@ $app->get('/main', function() use ($app){
     $app->render('main.php');
 });
 
-$app->get('/api', function() use ($app){
-    $app->render('api.php');
+$app->get('/demo', function() use ($app){
+    $app->render('demo.php');
 });
 
 # Test function

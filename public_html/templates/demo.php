@@ -2,7 +2,7 @@
 
 {% block html_head %}
 <style>
-	.api_wp:hover {
+	.demo_wp:hover {
 		font-weight: bold;
 		color: blue;
 	}
@@ -24,8 +24,8 @@
 		$("#tabs").tabs();
 		$("#tabs").css('word-wrap', 'break-word');
 		function getGeofierBaseURI(evt) {
-			return window.location.href.replace('/api', '');
-			//        return evt.currentTarget.baseURI.replace('/api','');
+			return window.location.href.replace('/demo', '');
+			//        return evt.currentTarget.baseURI.replace('/demo','');
 		}
 
 		function processResponse(response, query_uri) {
@@ -58,7 +58,7 @@
 		}
 
 
-		$(".api_wp").click(function(a) {
+		$(".demo_wp").click(function(a) {
 			a.preventDefault();
 			var uri = getGeofierBaseURI(a);
 			var obj = a.currentTarget;
@@ -120,9 +120,9 @@
 			<div class="col-lg-1"></div>
 			<div class="col-lg-3">
 <ul>
-			<li>	<a class="btn btn-default api_wp" href="configuration" role="button">Configuration test characteritics</a></li>
-			<li>	<a class="btn btn-default api_wp" href="features" role="button">See all features</a></li>
-			<li>	<a class="btn btn-default api_wp" href="columns" role="button">See all columns</a></li>
+			<li>	<a class="btn btn-default demo_wp" href="configuration" role="button">Configuration test characteritics</a></li>
+			<li>	<a class="btn btn-default demo_wp" href="features" role="button">See all features</a></li>
+			<li>	<a class="btn btn-default demo_wp" href="columns" role="button">See all columns</a></li>
 </ul>
 </div>
 			<div class="col-lg-3"><ul>
@@ -159,17 +159,17 @@
 
 		</br>
 		<!--		<li>
-		<div class="api_wp" href="configuration">
+		<div class="demo_wp" href="configuration">
 		Configuration Test
 		</div>
 		</li>
 		<li>
-		<div class="api_wp" href="features">
+		<div class="demo_wp" href="features">
 		All features
 		</div>
 		</li>
 		<li>
-		<div class="api_wp" href="columns">
+		<div class="demo_wp" href="columns">
 		Columns
 		</div>
 		</li>

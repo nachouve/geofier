@@ -21,7 +21,7 @@
 								<div class="col-lg-1">
 			</div>
 			<div class="col-lg-8">
-				Go to the <a href="api" class="btn btn-default" role="button">API</a> or learn more <a href="http://nuve.hol.es/geofier/" class="btn btn-default" role="button">ABOUT</a> this project
+				Go to the <a href="demo" class="btn btn-default" role="button">DEMO</a> or learn more <a href="http://nuve.hol.es/geofier/" class="btn btn-default" role="button">ABOUT</a> this project
 			</div>
 
 		</div>

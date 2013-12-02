@@ -69,6 +69,8 @@ $app->get('/feature/:id', getFeatureID);
 
 $app->get('/columns', getAllColumns);
 
+$app->get('/distinct/:column', getDistinctValues);
+
 # Filter by any column of the table
 $app->get('/feature/:column/:value', function ($column, $value){
     $db = new Database();
@@ -170,6 +172,28 @@ function getFeatureID($id){
 }
 
 #TODO Check status...
+function getDistinctValues($column){
+    $db = new Database();
+    $resp = $db->getDistinctValues($column);
+    if ($db->status == 'ready') {        
+        $msg['status'] = 'success';
+        #$resp = $db->db->query($sql);
+        if ($resp === false) {
+            $msg['status'] = 'error';
+            $error_info = $db->db->errorInfo();
+            $msg['message'] = 'query not successful: '.$error_info[2];
+        } else if (sizeof($resp)==0){
+            $msg['status'] = 'error';
+            $msg['message'] = 'no rows in the table';
+        }
+    } else {
+        $msg['status'] = 'error';
+        $msg['message'] = $db->error_message;
+    }
+    $msg['data'] = $resp;
+    echo json_encode($msg);
+}
+
 function getAllColumns(){
     $db = new Database();
     $resp = $db->getAllColumns();

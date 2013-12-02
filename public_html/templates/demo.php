@@ -110,9 +110,9 @@
 
 		<div class="row">
 			<div class="col-lg-12">
-				<h4 class="title">API Resources:</h4>
+				<h4 class="title">Geofier Client Demo:</h4>
 				<p>
-					Try one of this options to see the demo file/configuration characteristics:
+					Here we are a demo to see some API resources (request and responses) in action. Just click buttons and fill text inputs:
 				</p>
 			</div>
 		</div>

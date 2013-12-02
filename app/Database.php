@@ -94,8 +94,9 @@ class Database{
         include('config.php');
         $rows = ORM::for_table($TBL_NAME)->distinct()->select($column)->order_by_asc($column)->find_array();
         $values = array();
-        foreach ($rows as $row) {
-            $values[]=$row[$column];
+        foreach ($rows as $key => $value) {
+            $val = array_values($value);
+            $values[]=$val[0];
         }
         return $values;
     }

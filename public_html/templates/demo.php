@@ -111,7 +111,7 @@ $(document).ready(function() {
       <div class="col-lg-12">
         <h4 class="title">Geofier Client Demo:</h4>
         <p>
-          Here there is a demo to see some API resources (request and responses) in action. Just click buttons and fill text inputs:
+          Here there is a demo to see some API resources (request and responses) in action. Just click a button and/or fill the text inputs:
         </p>
       </div>
     </div>

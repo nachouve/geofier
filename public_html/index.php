@@ -21,6 +21,10 @@ $app->error(function (\Exception $e) use ($app) {
     $app->render('error.php');
 });
 
+$app->notFound(function () use ($app) {
+    $app->render('404.php');
+});
+
 $app->configureMode('web_demo', function () use ($app) {
     global $MAIN_PAGE;
     $MAIN_PAGE = 'main.php';

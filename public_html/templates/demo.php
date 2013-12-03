@@ -27,20 +27,18 @@ $(document).ready(function() {
     return window.location.href.replace('/demo', '');
   }
 
-  function processFailResponse(response, query_uri) {
-      $().toastmessage('showErrorToast', "Error");
-  }
-
   function processResponse(response, query_uri) {
     $("#query").html('<a href="' + query_uri + '">' + query_uri + '</a>');
     var parsed_resp = $.parseJSON(response);
     var tbl = prettyPrint(parsed_resp, {
       maxDepth : 5
     });
-    if (parsed_resp["status"]=="success"){
-      $().toastmessage('showSuccessToast', "Success");
-    } 
     if (parsed_resp["status"]) {
+      if (parsed_resp["status"]=="success"){
+        $().toastmessage('showSuccessToast', "Success");
+      } else {
+        $().toastmessage('showErrorToast', "Error");
+      } 
       $("#tabs").tabs('option', 'active', 0);
       $("#tabs").tabs({
         'disabled' : [2]
@@ -67,7 +65,7 @@ $(document).ready(function() {
     $.get(query_uri, null, function(response) {
       processResponse(response, query_uri)
     }).fail(function(response){
-      processFailResponse(response.responseText, query_uri);
+      processResponse(response.responseText, query_uri);
     });
   });
 
@@ -81,7 +79,7 @@ $(document).ready(function() {
     $.get(query_uri, null, function(response) {
       processResponse(response, query_uri);
     }).fail(function(response){
-      processFailResponse(response.responseText, query_uri);
+      processResponse(response.responseText, query_uri);
     });
   });
 
@@ -96,7 +94,7 @@ $(document).ready(function() {
     $.get(query_uri, null, function(response) {
       processResponse(response, query_uri);
     }).fail(function(response){
-      processFailResponse(response.responseText, query_uri);
+      processResponse(response.responseText, query_uri);
     });
   });
 

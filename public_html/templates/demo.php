@@ -121,20 +121,20 @@ $(document).ready(function() {
       <div class="col-lg-1"></div>
       <div class="col-lg-3">
       <ul>
-        <li>	<a class="btn btn-default demo_wp" href="configuration" role="button">Configuration test characteritics</a></li>
-        <li>	<a class="btn btn-default demo_wp" href="features" role="button">See all features</a></li>
-        <li>	<a class="btn btn-default demo_wp" href="columns" role="button">See all columns</a></li>
+        <li>	<a class="btn btn-default demo_wp" href="configuration" role="button">See Geofier Configuration</a></li>
+        <li>	<a class="btn btn-default demo_wp" href="columns" role="button">Get columns</a></li>
       </ul>
       </div>
       <div class="col-lg-3">
       <ul>
+        <li>	<a class="btn btn-default demo_wp" href="features" role="button">Get All Features</a></li>
         <li>
         <form class="form-inline" role="form">
           <div class="form-group">
             <input type="text" class="form-control" id="id_num" placeholder="Feature ID">
           </div>
           <button type="submit" class="btn btn-default" id="id_filter">
-            See FILTER results BY feature ID
+            Get Features FILTERED BY ID
           </button>
         </form>
         </li>
@@ -149,7 +149,7 @@ $(document).ready(function() {
             <input type="text" class="form-control" id="col_equals" placeholder="Value">
           </div>
           <button type="submit" class="btn btn-default" id="col_filter">
-            See FILTER results BY VALUE in column selected
+            Get Features with column EQUALS TO value
           </button>
           </form>
           </li>

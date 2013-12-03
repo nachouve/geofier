@@ -1,12 +1,6 @@
 <?php
 
-# TODO: Deal with big queries (http://www.php.net/manual/en/pdo.pgsqllobcreate.php, mysql different methods)
-# TODO: Use Prepared statements
-# TODO: Deal with different sql flavours [[try with CodeIgniter and its Active Record]]
-# TODO: Catch db exceptions on all functions
-# TODO: Only access config.php once!!!
-
-require_once 'vendor/autoload.php';
+equire_once 'vendor/autoload.php';
 
 class Database{
 
@@ -19,7 +13,7 @@ class Database{
         $this->status = 'ready';
         if ($DB_TYPE=='sqlite'){
             ORM::configure($DB_TYPE.':'.$DB_HOST);
-        } else { //($DB_TYPE=='pgsql' OR $DB_TYPE=='mysql'){
+        } else { 
             ORM::configure($DB_TYPE.':host='.$DB_HOST.';dbname='.$DB_NAME.';port='.$DB_PORT);
             ORM::configure('username', $DB_USER);
             ORM::configure('password',$DB_PASS);
@@ -38,7 +32,7 @@ class Database{
 
     public function ignoreFields($rows){
         include('config.php');
-        ## TODO This are not very optimized
+        ## TODO Optimize
         if (isset($IGNORE_COLUMNS)){
             foreach($rows as $row_num=>$row){
                 foreach ($row as $k=>$v){

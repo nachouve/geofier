@@ -7,7 +7,7 @@
 			<div class="col-lg-1">
 			</div>
 			<div class="col-lg-11">
-				<h3 class="title">Welcome to <a style="color:inherit" href="http://nuve.hol.es/geofier/">Geofier</a></h3>
+				<h3 class="title">Welcome to <a style="color:inherit" href="http://geofier.com">Geofier</a></h3>
 			</div>
 					</div>
 
@@ -21,7 +21,7 @@
 								<div class="col-lg-1">
 			</div>
 			<div class="col-lg-8">
-				Go to the <a href="demo" class="btn btn-default" role="button">DEMO</a> or learn more <a href="http://nuve.hol.es/geofier/" class="btn btn-default" role="button">ABOUT</a> this project
+				Go to the <a href="demo" class="btn btn-default" role="button">DEMO</a> or learn more <a href="http://geofier.com" class="btn btn-default" role="button">ABOUT</a> this project
 			</div>
 
 		</div>

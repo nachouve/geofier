@@ -1,5 +1,12 @@
 <?php
 
+/**
+ * Geofier - GeoJSON REST API from alphanumeric DB
+ * 
+ * @package Geofier
+ * 
+ */
+
 $GEOFIER_VERSION=0.2;
 
 /*

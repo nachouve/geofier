@@ -1,5 +1,14 @@
 <?php
 
+/**
+ * Geofier - GeoJSON REST API from alphanumeric DB
+ * 
+ * @author Nacho Varela (nachouve at gmail dot com)
+ * @copyright Copyright (C) 2013-2014 Nacho Varela (nachouve at gmail dot com)
+ * @package Geofier
+ * 
+ */
+
 class GeoJSON {
 
     private $in_proj;
@@ -56,4 +65,3 @@ class GeoJSON {
     }
 }
 
-?>

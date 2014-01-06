@@ -1,5 +1,14 @@
 <?php
 
+/**
+ * Geofier - GeoJSON REST API from alphanumeric DB
+ * 
+ * @author Nacho Varela (nachouve at gmail dot com)
+ * @copyright Copyright (C) 2013-2014 Nacho Varela (nachouve at gmail dot com)
+ * @package Geofier
+ * 
+ */
+
 require '../app/vendor/autoload.php';
 
 require_once '../app/Database.php';
@@ -239,4 +248,3 @@ if (isset($argv[1])){
    }
 }
 
-?>

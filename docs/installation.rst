@@ -24,6 +24,7 @@ Requisitos
 * PHP >= 5.3.1
 * PHP PDO ( http://www.php.net/manual/en/book.pdo.php ) 
 * PHP PDO para la base de datos con la que quieras trabajar (p.e php5-mysql)
+* PHP JSON si en tu sistema no estuviese incluido (php5-json)
 * Un servidor web (por ejemplo Apache Server) configurado adecuadamente
 
 

@@ -37,7 +37,7 @@
 			</div>
 			<div class="col-lg-11">
 				<p id="version">
-		Running Geofier version 0.2-RC1
+		Running Geofier version 0.2
 	</p>
 			</div>
 					</div>

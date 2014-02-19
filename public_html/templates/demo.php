@@ -2,10 +2,6 @@
 
 {% block html_head %}
 <style>
-    .demo_wp:hover {
-        font-weight: bold;
-        color: blue;
-    }
 
 </style>
 
@@ -106,11 +102,11 @@
 {% block content %}
 <div class="jumbotran jumbo_welcome" style="font-family:'Arapey'; color:rgb(100,100,100); font-size:1.1em;">
     <div class="container">
-        <h2 class="font_ara">Geofier Client Demo</h2>
-        <p>Here is a demo to see some API resources (request and responses) in action.</p>
+        <!--<h2 class="font_ara">Geofier Client Demo</h2>
+        <p>Here is a demo to see some API resources (request and responses) in action.</p>-->
         <div class="row">
             <div class="col-lg-4 column_left">                
-                <h3>Choose an option</h3>
+                <h3>CHOOSE AN OPTION</h3>
                 <ul>
                     <li>Check the configuration
                         <ul>

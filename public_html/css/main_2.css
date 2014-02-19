@@ -1,50 +1,50 @@
 /* ..........................................................................*/
-
 .font_econ {
-	font-family: 'Economica', sans-serif;
+    font-family: 'Economica', sans-serif;
 }
 .font_ara {
-	font-family: 'Arapey', serif;
+    font-family: 'Arapey', serif;
 }
 .font_bub {
-	font-family: 'Bubbler One', sans-serif
+    font-family: 'Bubbler One', sans-serif
 }
-
 h1 a {
-	color: inherit;
-	font-weight: normal;
+    color: inherit;
+    font-weight: normal;
 }
-h1 a:hover {
-	color: rgb(150,150,150);
-	text-decoration: none;
+h1 a:  {
+    color: rgb(150,150,150);
+    text-decoration: none;
+}
+.demo_wp:hover {
+    font-weight: bold;
 }
 
 h1, h2, h3, h4, h5, h6 {
-	font-family: inherit
+    font-family: inherit
 }
 h3 {
-	font-size: 16px;
+    font-size: 16px;
 }/*bootstrap gives it 24 px*/
 h2 {
-	font-size: 25px;
+    font-size: 25px;
 }/*bootstrap gives it 30 px*/
 h1 {
-	font-size: 30px;}
+    font-size: 30px;}
+/* ..........................................................................*/
+#filters button{margin-left:30px;}
+/* ..........................................................................*/
 
-       /* ..........................................................................*/
-       #filters button{margin-left:30px;}
-       /* ..........................................................................*/
-       
 .jumbo_welcome {
-	border-width: 0px 0px 0px 0px;
-	border-color: #BF7130;
-	border-style: solid;
-	margin-top: 10px;
+    border-width: 0px 0px 0px 0px;
+    border-color: #BF7130;
+    border-style: solid;
+    margin-top: 10px;
 }
 body {
-	background: none repeat scroll 0% 0%;
-	font-family: 'Arapey' !important, serif;
-	background: white;
+    background: none repeat scroll 0% 0%;
+    font-family: 'Arapey' !important, serif;
+    background: white;
 }
 a .btn .btn-default{color:red !important}
 
@@ -53,137 +53,25 @@ a .btn .btn-default{color:red !important}
 /* ..........................................................................*/
 
 .column_left {
-	background-color: #ffcd73;
-	min-width: 340px;
-	border-radius: 10px;
+    background-color: rgb(240,240,240);
+    min-width: 340px;
+    border-radius: 10px;padding-bottom: 30px;
 }
+.column_left h3{color:black;}
 .color1 {
-	color: white;
+    color: white;
 }
-
-
 /* ..........................................................................*/
-
-#description {
-	padding-left: 1em;
-	color: rgb(100, 100, 100);
-}
-
-
-.title_in_columns {
-	border-bottom: 1px dotted;
-
-
-/* columns..........................................................................*/
-
-div.column {
-	width: 45%;
-	float: left;
-}
-div.column.first {
-	height: 150px;
-	width: 70%;
-}
-div.column.first h2 {
-	line-height: 1em;
-}
-div.column.second {
-	clear: right;
-	width: 30%;
-}
-div.column.third {
-	padding-right: 10%;
-	height: 350px;
-}
-div.column.fifth {
-	padding-right: 10%;
-	height: 350px;
-}
-div.column p {
-	text-align: justify;
-}
 p {
-	margin: 0px 0px 0.5em;
+    margin: 0px 0px 0.5em;
 }
 p#version {
-	font-style: italic;
-	color: rgb(100,100,100);
-	font-size: 0.8em;
+    font-style: italic;
+    color: rgb(100,100,100);
+    font-size: 0.8em;
 }
 a {
-	color: rgb(0,0,0);
-	text-decoration: none;
-	font-weight: bold;
+    color: rgb(0,0,0);
+    text-decoration: none;
+    font-weight: bold;
 }
-
-/* general classes for font variations..........................................................................*/
-.color_1 {
-	color: rgb(100,100,100);
-}
-.color_2 {
-	color: rgb(150,150,150);
-}
-.p_class {
-	font-size: 0.9em;
-}
-
-/* lists..........................................................................*/
-
-ul li {
-	padding: 4px;
-	color: rgb(0,0,0);
-}
-
-
-
-/* buttons..........................................................................*/
-#buttons h5 {
-	display: inline-block;
-	margin: 5px;
-	padding: 0.5em;
-	padding-left: 35px;
-	text-align: center;
-	letter-spacing: 0.2em;
-}
-#buttons h5#first_button {
-	margin-top: 40px;
-}
-#first_button {
-	clear: right;
-	background: url("../images/demo_image.png") no-repeat;
-}
-#first_button:hover {
-	background: url("../images/demo_image_2.png") no-repeat;
-	text-shadow: 2px 2px 1px rgb(200, 200, 200);
-}
-#second_button {
-	background: url("../images/down_image.png") no-repeat;
-}
-#second_button:hover {
-	background: url("../images/down_image_2.png") no-repeat;
-	text-shadow: 2px 2px 1px rgb(200, 200, 200);
-}
-
-/*welcome page........*/
-#top_bar {
-	background: rgb(70,70,70);
-	display: block;
-	height: 70px;
-	font-size: 90%;
-	line-height: 0;
-}
-#top_bar img {
-	margin: 10px;
-}
-.welcome_column {
-	float: left;
-	margin: 20px;
-	text-align: center;
-	color: white
-}
-p#first_line {
-	margin-top: 60px;
-	margin-bottom: 30px;
-	font-size: 1.1em;
-}
-

@@ -102,8 +102,6 @@
 {% block content %}
 <div class="jumbotran jumbo_welcome" style="font-family:'Arapey'; color:rgb(100,100,100); font-size:1.1em;">
     <div class="container">
-        <!--<h2 class="font_ara">Geofier Client Demo</h2>
-        <p>Here is a demo to see some API resources (request and responses) in action.</p>-->
         <div class="row">
             <div class="col-lg-4 column_left">                
                 <h3>CHOOSE AN OPTION</h3>
@@ -150,7 +148,7 @@
             <div class="col-lg-8 column_right">
                 <h4 class="title">Service URL: <span id="query"></span></h4>     
                 <h4 class="title">Service Output</h4>
-                <div id="result" style="border: 1px gray solid;">
+                <div id="result">
                     <div id="tabs">
                         <ul>
                             <li><a href="#tabs-1">Table</a></li>

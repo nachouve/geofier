@@ -1,4 +1,15 @@
 /* ..........................................................................*/
+
+.font_econ {
+	font-family: 'Economica', sans-serif;
+}
+.font_ara {
+	font-family: 'Arapey', serif;
+}
+.font_bub {
+	font-family: 'Bubbler One', sans-serif
+}
+
 h1 a {
 	color: inherit;
 	font-weight: normal;
@@ -7,6 +18,23 @@ h1 a:hover {
 	color: rgb(150,150,150);
 	text-decoration: none;
 }
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: inherit
+}
+h3 {
+	font-size: 16px;
+}/*bootstrap gives it 24 px*/
+h2 {
+	font-size: 25px;
+}/*bootstrap gives it 30 px*/
+h1 {
+	font-size: 30px;}
+
+       /* ..........................................................................*/
+       #filters button{margin-left:30px;}
+       /* ..........................................................................*/
+       
 .jumbo_welcome {
 	border-width: 0px 0px 0px 0px;
 	border-color: #BF7130;
@@ -20,8 +48,20 @@ body {
 }
 a .btn .btn-default{color:red !important}
 
-.title{font-family:'Arapey'; color:#EC9730;}
+.title{font-family:'Arapey';}
 #query a {color:rgb(100,100,100); font-size:15px; font-weight:normal}
+/* ..........................................................................*/
+
+.column_left {
+	background-color: #ffcd73;
+	min-width: 340px;
+	border-radius: 10px;
+}
+.color1 {
+	color: white;
+}
+
+
 /* ..........................................................................*/
 
 #description {
@@ -29,58 +69,10 @@ a .btn .btn-default{color:red !important}
 	color: rgb(100, 100, 100);
 }
 
-#top_bar h3 {
-	font-size: 1.3em;
-}
-
-div.middle h1, div.middle h2, div.middle h3, {line-height: 1.2;}
-
-div.middle h1, div.middle h2 {
-	text-align: center;
-}
-div.middle h3, div.middle h4 {
-	text-align: justify;
-}
-
-div.middle h1 {
-	text-shadow: 2px 2px 1px rgb(200, 200, 200);
-	margin-bottom: 0px;
-}
-div.middle h2 {
-	margin: 20px 0px 40px;
-}
-div.middle h3 {
-	margin: 0em;
-	clear: left;
-}
-div.middle h4 {
-	margin: 2em 0em 0em 0em;
-}
-
-.font_econ {
-	font-family: 'Economica', sans-serif;
-}
-.font_ara {
-	font-family: 'Arapey', serif;
-}
-.font_bub {
-	font-family: 'Bubbler One', sans-serif
-}
 
 .title_in_columns {
 	border-bottom: 1px dotted;
-}
-h2, h5 {
-	font-family: 'Quattrocento', sans-serif;
-	color: rgb(100, 100, 100);
-}
 
-div.middle {
-	width: 800px;
-	margin: 0px auto;
-	padding-top: 20px;
-	vertical-align: baseline;
-}
 
 /* columns..........................................................................*/
 
@@ -139,7 +131,7 @@ a {
 
 ul li {
 	padding: 4px;
-	color: rgb(80,80,80);
+	color: rgb(0,0,0);
 }
 
 

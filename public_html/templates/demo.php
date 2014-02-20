@@ -1,9 +1,6 @@
 {% extends "base.twig.html" %}
 
 {% block html_head %}
-<style>
-
-</style>
 
 <script src="js/jquery-1.10.2.js"></script>
 <script src="js/jquery.toastmessage.js"></script>

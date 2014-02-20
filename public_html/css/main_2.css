@@ -12,10 +12,6 @@ h1 a {
     color: inherit;
     font-weight: normal;
 }
-h1 a:  {
-    color: rgb(150,150,150);
-    text-decoration: none;
-}
 .demo_wp:hover {
     font-weight: bold;
 }
@@ -52,7 +48,7 @@ body {
 a .btn .btn-default{color:red !important}
 
 .title{font-family:'Arapey';}
-#query a {color:rgb(100,100,100); font-size:15px; font-weight:normal}
+#query a {color:#2981ca; font-size:15px; font-weight:normal}
 /* ..........................................................................*/
 
 .column_left {

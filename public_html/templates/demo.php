@@ -146,8 +146,8 @@
             </div>
 
             <div class="col-lg-8 column_right">
-                <h4 class="title">Service URL: <span id="query"></span></h4>     
-                <h4 class="title">Service Output</h4>
+                <h4 class="title">Service URL: <span id="query" class="well well-sm"></span>  </h4>  
+                <h4 class="title">Service Output: </h4>
                 <div id="result">
                     <div id="tabs">
                         <ul>

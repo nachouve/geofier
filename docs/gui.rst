@@ -26,7 +26,7 @@ Al instalar **Geofier** en un propio sistema concreto, es posible que se necesit
 que la interfaz funcione correctamente.
 
 Esta GUI está construida y probada con un servidor Apache, haciendo uso de `.htaccess`. Ten encuenta que puedes
-necesitar ajustar algunos parámetros, por ejemplo, la directiva `AllowOverride`.
+necesitar ajustar algunos parámetros, por ejemplo, la directiva `AllowOverride` o activar la directiva `RewriteEngine`.
 
 .. _geofier/public_html/demo: ../geofier/public_html/demo
 

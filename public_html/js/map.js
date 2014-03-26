@@ -6,14 +6,25 @@ var myStyle = {
     "weight": 5,
     "opacity": 0.65
 };
-var cmAttr = 'Map data &copy; 2011 OpenStreetMap contributors, Imagery &copy; 2011 CloudMade',
-    cmUrl = 'http://{s}.tile.cloudmade.com/BC9A493B41014CAABB98F0471D759707/{styleId}/256/{z}/{x}/{y}.png';
 
-var minimal   = L.tileLayer(cmUrl, {styleId: 22677, attribution: cmAttr}),
-    midnight  = L.tileLayer(cmUrl, {styleId: 999,   attribution: cmAttr}),
-    motorways = L.tileLayer(cmUrl, {styleId: 46561, attribution: cmAttr});
+L.TileLayer.Common = L.TileLayer.extend({
+	initialize: function (options) {
+		L.TileLayer.prototype.initialize.call(this, this.url, options);
+	}
+});
 
-minimal.addTo(map);
+(function () {
+	
+	var osmAttr = '&copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>';
+
+	L.TileLayer.OpenStreetMap = L.TileLayer.Common.extend({
+		url: 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+		options: {attribution: osmAttr}
+	});
+}());
+
+var openStreetMap = new L.TileLayer.OpenStreetMap();
+openStreetMap.addTo(map);
 
 function popup(feature, layer) {
      if (feature.properties) {

@@ -78,15 +78,22 @@ class Database
         return $rows;
     }
 
-    public function getByFilter($column, $value)
+    public function getByFilter($column, $value, $strict = TRUE)
     {
         include 'config.php';
         // TODO: Check if column exists...
-        $rows = ORM::for_table($TBL_NAME)
-            ->where($column, $value)
-            ->limit($MAX_FEATS)
-            ->find_array();
-
+        if ($strict) {
+            $rows = ORM::for_table($TBL_NAME)
+                ->where($column, $value)
+                ->limit($MAX_FEATS)
+                ->find_array();
+        } else {
+            $rows = ORM::for_table($TBL_NAME)
+                ->where_like($column, $value)
+                ->limit($MAX_FEATS)
+                ->find_array();
+        }
+        
         $rows = $this->ignoreFields($rows);
         return $rows;
     }

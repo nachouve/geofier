@@ -1,0 +1,4 @@
+*.swp
+docs/_build
+config.php
+/nbproject/private/

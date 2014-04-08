@@ -118,16 +118,6 @@ $app->get(
     }
 );
 
-// Filter by any column of the table
-$app->get(
-    '/like/:column/:value', 
-    function ($column, $value) {
-        $db = new Database();
-        $resp = $db->getByFilter($column, $value, FALSE);
-        echo toJSON($resp);
-    }
-);
-
 function testDB()
 {
     include '../app/config.php';

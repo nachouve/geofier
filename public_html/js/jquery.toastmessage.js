@@ -53,8 +53,7 @@
  *
  *   Author: Daniel Bremer-Tonn
 **/
-(function($)
-{
+(($ => {
 	var settings = {
 				inEffect: 			{opacity: 'show'},	// in effect
 				inEffectDuration: 	600,				// in effect duration in miliseconds
@@ -68,73 +67,68 @@
             };
 
     var methods = {
-        init : function(options)
-		{
+        init(options) {
 			if (options) {
                 $.extend( settings, options );
             }
 		},
 
-        showToast : function(options)
-		{
-			var localSettings = {};
+        showToast(options) {
+            var localSettings = {};
             $.extend(localSettings, settings, options);
 
-			// declare variables
-            var toastWrapAll, toastItemOuter, toastItemInner, toastItemClose, toastItemImage;
+            // declare variables
+            var toastWrapAll;
 
-			toastWrapAll	= (!$('.toast-container').length) ? $('<div></div>').addClass('toast-container').addClass('toast-position-' + localSettings.position).appendTo('body') : $('.toast-container');
-			toastItemOuter	= $('<div></div>').addClass('toast-item-wrapper');
-			toastItemInner	= $('<div></div>').hide().addClass('toast-item toast-type-' + localSettings.type).appendTo(toastWrapAll).html($('<p>').append (localSettings.text)).animate(localSettings.inEffect, localSettings.inEffectDuration).wrap(toastItemOuter);
-			toastItemClose	= $('<div></div>').addClass('toast-item-close').prependTo(toastItemInner).html(localSettings.closeText).click(function() { $().toastmessage('removeToast',toastItemInner, localSettings) });
-			toastItemImage  = $('<div></div>').addClass('toast-item-image').addClass('toast-item-image-' + localSettings.type).prependTo(toastItemInner);
+            var toastItemOuter;
+            var toastItemInner;
+            var toastItemClose;
+            var toastItemImage;
+
+            toastWrapAll	= (!$('.toast-container').length) ? $('<div></div>').addClass('toast-container').addClass('toast-position-' + localSettings.position).appendTo('body') : $('.toast-container');
+            toastItemOuter	= $('<div></div>').addClass('toast-item-wrapper');
+            toastItemInner	= $('<div></div>').hide().addClass('toast-item toast-type-' + localSettings.type).appendTo(toastWrapAll).html($('<p>').append (localSettings.text)).animate(localSettings.inEffect, localSettings.inEffectDuration).wrap(toastItemOuter);
+            toastItemClose	= $('<div></div>').addClass('toast-item-close').prependTo(toastItemInner).html(localSettings.closeText).click(() => { $().toastmessage('removeToast',toastItemInner, localSettings) });
+            toastItemImage  = $('<div></div>').addClass('toast-item-image').addClass('toast-item-image-' + localSettings.type).prependTo(toastItemInner);
 
             if(navigator.userAgent.match(/MSIE 6/i))
 			{
 		    	toastWrapAll.css({top: document.documentElement.scrollTop});
 		    }
 
-			if(!localSettings.sticky)
+            if(!localSettings.sticky)
 			{
-				setTimeout(function()
-				{
+				setTimeout(() => {
 					$().toastmessage('removeToast', toastItemInner, localSettings);
 				},
 				localSettings.stayTime);
 			}
             return toastItemInner;
-		},
+        },
 
-        showNoticeToast : function (message)
-        {
+        showNoticeToast(message) {
             var options = {text : message, type : 'notice'};
             return $().toastmessage('showToast', options);
         },
 
-        showSuccessToast : function (message)
-        {
+        showSuccessToast(message) {
             var options = {text : message, type : 'success'};
             return $().toastmessage('showToast', options);
         },
 
-        showErrorToast : function (message)
-        {
+        showErrorToast(message) {
             var options = {text : message, type : 'error'};
             return $().toastmessage('showToast', options);
         },
 
-        showWarningToast : function (message)
-        {
+        showWarningToast(message) {
             var options = {text : message, type : 'warning'};
             return $().toastmessage('showToast', options);
         },
 
-		removeToast: function(obj, options)
-		{
-			obj.animate({opacity: '0'}, 600, function()
-			{
-				obj.parent().animate({height: '0px'}, 300, function()
-				{
+		removeToast(obj, options) {
+			obj.animate({opacity: '0'}, 600, () => {
+				obj.parent().animate({height: '0px'}, 300, () => {
 					obj.parent().remove();
 				});
 			});
@@ -158,4 +152,4 @@
         }
     };
 
-})(jQuery);
+}))(jQuery);

@@ -8,12 +8,12 @@ var myStyle = {
 };
 
 L.TileLayer.Common = L.TileLayer.extend({
-	initialize: function (options) {
+	initialize(options) {
 		L.TileLayer.prototype.initialize.call(this, this.url, options);
 	}
 });
 
-(function () {
+((() => {
 	
 	var osmAttr = '&copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>';
 
@@ -21,7 +21,7 @@ L.TileLayer.Common = L.TileLayer.extend({
 		url: 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
 		options: {attribution: osmAttr}
 	});
-}());
+})());
 
 var openStreetMap = new L.TileLayer.OpenStreetMap();
 openStreetMap.addTo(map);
@@ -40,9 +40,9 @@ function popup(feature, layer) {
 function loadMap(url){
 $.ajax({
     type: "GET",
-    url: url,//"features",
+    url,//"features",
     dataType: 'json',
-    success: function (response) {
+    success(response) {
 	if (geojsonLayer){
 		map.removeLayer(geojsonLayer);
 	}
